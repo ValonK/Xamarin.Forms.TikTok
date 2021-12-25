@@ -9,7 +9,7 @@
              BarBackgroundColor="Black">
     <views:HomeView IconImageSource="ic_home.png" Title="Home"/>
     <views:DiscoverView IconImageSource="ic_discover.png" Title="Discover"/>
-    <views:RecordView />
+    <views:RecordView IconImageSource="ic_add.png"/>
     <views:InboxView IconImageSource="ic_inbox.png" Title="Inbox"/>
     <views:ProfileView IconImageSource="ic_user.png" Title="Profile"/>
 </TabbedPage>

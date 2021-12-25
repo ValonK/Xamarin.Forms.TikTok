@@ -36,6 +36,7 @@
             x:Name="CarouselView"
             MoveThresholdDistance="20"
             OppositePanDirectionDisablingThreshold="1"
+            SelectedItem="{Binding CurrentItem}"
             IsVisible="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}" 
             ItemsSource="{Binding Items}">
             <panCardView:CarouselView.ItemTemplate>
@@ -77,6 +78,7 @@
                          Grid.Column="1">
 
                 <Label Text="Following"
+                       TextColor="White"
                        VerticalTextAlignment="Center"
                        FontAttributes="None"/>
 
@@ -85,6 +87,7 @@
                          HeightRequest="10"/>
 
                 <Label Text="For You"
+                       TextColor="White"
                        VerticalTextAlignment="Center"
                        FontFamily="{StaticResource TikTokFont}"
                        FontAttributes="Bold"/>
