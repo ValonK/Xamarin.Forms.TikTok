@@ -10,8 +10,10 @@ namespace Xamarin.Forms.TikTok.Models
         private string _fullName;
         private string _description;
         private string _videoUrl;
-        private int _likes;
-        private int _followers;
+        private string _likes;
+        private string _comments;
+        private string _song;
+        private string _shares;
 
         public string Username
         {
@@ -37,16 +39,28 @@ namespace Xamarin.Forms.TikTok.Models
             set => _videoUrl = value;
         }
 
-        public int Likes
+        public string Likes
         {
             get => _likes;
             set => _likes = value;
         }
 
-        public int Followers
+        public string Comments
         {
-            get => _followers;
-            set => _followers = value;
+            get => _comments;
+            set => _comments = value;
+        }
+
+        public string Song
+        {
+            get => _song;
+            set => _song = value;
+        }
+
+        public string Shares
+        {
+            get => _shares;
+            set => _shares = value;
         }
     }
 }

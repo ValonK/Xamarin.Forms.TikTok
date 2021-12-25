@@ -5,8 +5,9 @@
              xmlns:models="clr-namespace:Xamarin.Forms.TikTok.Models;assembly=Xamarin.Forms.TikTok"
              x:Class="Xamarin.Forms.TikTok.HomeViewVideoControl">
     <Grid>
+        
         <xct:MediaElement Source="{Binding VideoUrl}" 
-                          AutoPlay="True"
+                          AutoPlay="False"
                           Aspect="AspectFill" 
                           KeepScreenOn="True" 
                           x:DataType="models:TikTokItem"

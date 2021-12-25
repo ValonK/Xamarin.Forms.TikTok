@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms.TikTok.ViewModels;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Xamarin.Forms.TikTok.ViewModels;
 using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.TikTok.Views
@@ -16,11 +18,12 @@ namespace Xamarin.Forms.TikTok.Views
             BindingContext = _homeViewModel;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
             _homeViewModel?.Appearing();
             CarouselView.UserInteracted += CarouselView_UserInteracted;
+            await RotateElement(ArtistImage, CancellationToken.None);
         }
 
         protected override void OnDisappearing()
@@ -28,6 +31,15 @@ namespace Xamarin.Forms.TikTok.Views
             base.OnDisappearing();
             _homeViewModel?.Disappearing();
         }
+
+        private async Task RotateElement(VisualElement element, CancellationToken cancellation)
+        {
+            while (!cancellation.IsCancellationRequested) 
+            { 
+                await element.RotateTo(360, 1900, Easing.Linear); 
+                await element.RotateTo(0, 0);
+            }
+        } 
 
         private void CarouselView_UserInteracted(PanCardView.CardsView view, PanCardView.EventArgs.UserInteractedEventArgs args)
         {

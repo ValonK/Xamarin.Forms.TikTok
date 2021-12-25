@@ -16,5 +16,10 @@ namespace Xamarin.Forms.TikTok
         {
             InitializeComponent();
         }
+
+        private void MediaElement_OnMediaFailed(object sender, EventArgs e)
+        {
+            var m = "";
+        }
     }
 }

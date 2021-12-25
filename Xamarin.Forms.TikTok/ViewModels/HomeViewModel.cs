@@ -7,6 +7,7 @@ namespace Xamarin.Forms.TikTok.ViewModels
     public class HomeViewModel : BaseViewModel
     {
         private ObservableCollection<TikTokItem> _items;
+        private TikTokItem _currentItem;
 
         public HomeViewModel()
         {
@@ -17,6 +18,12 @@ namespace Xamarin.Forms.TikTok.ViewModels
         {
             get => _items;
             set => SetProperty(ref _items, value);
+        }
+
+        public TikTokItem CurrentItem
+        {
+            get => _currentItem;
+            set => SetProperty(ref _currentItem, value);
         }
 
         public async void Appearing()
@@ -37,40 +44,66 @@ namespace Xamarin.Forms.TikTok.ViewModels
             Items = new ObservableCollection<TikTokItem>();
             Items.Add(new()
             {
-                Username = "shanselman",
+                Username = "@shanselman",
                 FullName = "Scott Hanselman",
-                VideoUrl = "ms-appx:///tikvideo1.mp4"
+                VideoUrl = "ms-appx:///tikvideo1.mp4",
+                Song = "Some music artist Artist - Music",
+                Comments = "10.6K",
+                Likes = "5.9K",
+                Shares = "2100"
             });
             Items.Add(new()
             {
-                Username = "shanselman",
+                Username = "@shanselman",
                 FullName = "Scott Hanselman",
-                VideoUrl = "ms-appx:///tikvideo2.mp4"
+                VideoUrl = "ms-appx:///tikvideo2.mp4",
+                Song = "Some music artist Artist - Music",
+                Comments = "10.6K",
+                Likes = "5.9K",
+                Shares = "1100"
             });
             Items.Add(new()
             {
-                Username = "shanselman",
+                Username = "@shanselman",
                 FullName = "Scott Hanselman",
-                VideoUrl = "ms-appx:///tikvideo3.mp4"
+                VideoUrl = "ms-appx:///tikvideo3.mp4",
+                Song = "Some music artist Artist - Music",
+                Comments = "10.6K",
+                Likes = "5.9K",
+                Shares = "100"
             });
             Items.Add(new()
             {
-                Username = "shanselman",
+                Username = "@shanselman",
                 FullName = "Scott Hanselman",
-                VideoUrl = "ms-appx:///tikvideo4.mp4"
+                VideoUrl = "ms-appx:///tikvideo4.mp4",
+                Song = "Some music artist Artist - Music",
+                Comments = "10.6K",
+                Likes = "5.9K",
+                Shares = "3100"
             });
             Items.Add(new()
             {
-                Username = "shanselman",
+                Username = "@shanselman",
                 FullName = "Scott Hanselman",
-                VideoUrl = "ms-appx:///tikvideo5.mp4"
+                VideoUrl = "ms-appx:///tikvideo5.mp4",
+                Song = "Some music artist Artist - Music",
+                Comments = "10.6K",
+                Likes = "5.9K",
+                Shares = "5100"
             });
             Items.Add(new()
             {
-                Username = "shanselman",
+                Username = "@shanselman",
                 FullName = "Scott Hanselman",
                 VideoUrl = "ms-appx:///tikvideo6.mp4",
+                Song = "Some music artist Artist - Music",
+                Comments = "10.6K",
+                Likes = "5.9K",
+                Shares = "6100"
             });
+
+            CurrentItem = Items[0];
         }
     }
 }

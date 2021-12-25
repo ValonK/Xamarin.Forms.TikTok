@@ -17,11 +17,13 @@
 
   <ItemGroup>
     <None Remove="Assets\Animations\loading.json" />
+    <None Remove="Assets\Animations\music.json" />
     <None Remove="Assets\Fonts\tiktokfont.ttf" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Assets\Animations\loading.json" />
+    <EmbeddedResource Include="Assets\Animations\music.json" />
     <EmbeddedResource Include="Assets\Fonts\tiktokfont.ttf" />
   </ItemGroup>
 

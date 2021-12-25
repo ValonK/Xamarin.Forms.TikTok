@@ -7,8 +7,30 @@
              x:Class="Xamarin.Forms.TikTok.Views.HomeView"
              xmlns:tikTok="clr-namespace:Xamarin.Forms.TikTok;assembly=Xamarin.Forms.TikTok"
              BackgroundColor="Black">
-    <Grid>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style TargetType="Label" x:Key="SideLabelStyle">
+                <Setter Property="FontFamily" Value="{StaticResource TikTokFont}"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="11"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="Image" x:Key="SideImageStyle">
+                <Setter Property="HeightRequest" Value="22"/>
+                <Setter Property="WidthRequest" Value="22"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <Grid RowDefinitions="*, Auto">
+
         <panCardView:CarouselView 
+            Grid.Row="0"
+            Grid.RowSpan="2"
             IsHorizontalOrientation="False"
             IsVerticalSwipeEnabled="True"
             x:Name="CarouselView"
@@ -23,7 +45,118 @@
             </panCardView:CarouselView.ItemTemplate>
         </panCardView:CarouselView>
 
+        
+        <!-- T I T L E -->
+        <Grid ColumnDefinitions="Auto, *, Auto"
+              InputTransparent="True"
+              VerticalOptions="Start"
+              BackgroundColor="Transparent"
+              Margin="20,20,20,0">
+
+            <Image Source="ic_live.png"
+                   HeightRequest="25"
+                   WidthRequest="25"
+                   Grid.Column="0"/>
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Margin="0,0,0,0"
+                         Grid.Column="1">
+
+                <Label Text="Following"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="None"/>
+
+                <BoxView BackgroundColor="White"
+                         WidthRequest="0.5"
+                         HeightRequest="10"/>
+
+                <Label Text="For You"
+                       VerticalTextAlignment="Center"
+                       FontFamily="{StaticResource TikTokFont}"
+                       FontAttributes="Bold"/>
+            </StackLayout>
+
+
+            <Image Source="ic_search.png"
+                   HeightRequest="25"
+                   WidthRequest="25"
+                   Grid.Column="2"/>
+        </Grid>
+
+        <!-- S I D E -->
+        <StackLayout Orientation="Vertical"
+                     Grid.Row="0"
+                     Spacing="20"
+                     HorizontalOptions="End"
+                     VerticalOptions="End"
+                     Margin="0,0,30,50"
+                     x:DataType="viewModels:HomeViewModel">
+
+            <StackLayout Orientation="Vertical"
+                         Spacing="6">
+                <Image Source="ic_heart.png"
+                       Style="{StaticResource SideImageStyle}"/>
+                <Label Style="{StaticResource SideLabelStyle}"
+                       Text="{Binding CurrentItem.Likes}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical"
+                         Spacing="6">
+                <Image Source="ic_comments.png"
+                       Style="{StaticResource SideImageStyle}"/>
+                <Label  Style="{StaticResource SideLabelStyle}"
+                        Text="{Binding CurrentItem.Comments}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical"
+                         Spacing="6">
+                <Image Source="ic_share.png"
+                       Style="{StaticResource SideImageStyle}"/>
+                <Label  Style="{StaticResource SideLabelStyle}"
+                        Text="{Binding CurrentItem.Shares}"/>
+            </StackLayout>
+
+        </StackLayout>
+
+        <!-- B O T T O M -->
+        <Grid ColumnDefinitions="*, Auto"
+              VerticalOptions="End"
+              Margin="20,0,20,10"
+              Grid.Row="1">
+
+            <StackLayout Orientation="Vertical"
+                         Grid.Column="0"
+                         x:DataType="viewModels:HomeViewModel">
+
+                <Label FontFamily="{StaticResource TikTokFont}"
+                       TextColor="White"
+                       FontSize="12"
+                       Text="{Binding CurrentItem.Username}"/>
+
+                <StackLayout Orientation="Horizontal">
+
+                    <Image Source="ic_music.png"
+                           HeightRequest="20"
+                           WidthRequest="20"/>
+
+                    <Label Text="{Binding CurrentItem.Song}"
+                           FontSize="12"
+                           VerticalTextAlignment="Center"
+                           TextColor="White"/>
+                </StackLayout>
+            </StackLayout>
+
+
+            <Image Source="ic_artist.png"
+                   x:Name="ArtistImage"
+                   Grid.Column="1"/>
+        </Grid>
+
         <forms:AnimationView AnimationSource="EmbeddedResource"
+                             Grid.Row="0"
+                             Grid.RowSpan="2"
                              IsVisible="{Binding IsBusy}"
                              IsAnimating="{Binding IsBusy}"
                              x:DataType="viewModels:HomeViewModel"
