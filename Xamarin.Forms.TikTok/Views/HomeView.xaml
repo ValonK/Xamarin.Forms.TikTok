@@ -2,13 +2,35 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:viewModels="clr-namespace:Xamarin.Forms.TikTok.ViewModels;assembly=Xamarin.Forms.TikTok"
+             xmlns:panCardView="clr-namespace:PanCardView;assembly=PanCardView"
              x:Class="Xamarin.Forms.TikTok.Views.HomeView"
+             xmlns:tikTok="clr-namespace:Xamarin.Forms.TikTok;assembly=Xamarin.Forms.TikTok"
              BackgroundColor="Black">
     <Grid>
+        <panCardView:CarouselView 
+            IsHorizontalOrientation="False"
+            IsVerticalSwipeEnabled="True"
+            x:Name="CarouselView"
+            MoveThresholdDistance="20"
+            OppositePanDirectionDisablingThreshold="1"
+            IsVisible="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}" 
+            ItemsSource="{Binding Items}">
+            <panCardView:CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <tikTok:HomeViewVideoControl/>
+                </DataTemplate>
+            </panCardView:CarouselView.ItemTemplate>
+        </panCardView:CarouselView>
+
         <forms:AnimationView AnimationSource="EmbeddedResource"
-                              Animation="Assets.Animations.loading.json"
-                              VerticalOptions="FillAndExpand"
-                              HorizontalOptions="FillAndExpand"
-                              RepeatMode="Infinite"/>
+                             IsVisible="{Binding IsBusy}"
+                             IsAnimating="{Binding IsBusy}"
+                             x:DataType="viewModels:HomeViewModel"
+                             Animation="Assets.Animations.loading.json"
+                             VerticalOptions="Center"
+                             HeightRequest="80"
+                             HorizontalOptions="Center"
+                             RepeatMode="Infinite"/>
     </Grid>
 </ContentPage>
