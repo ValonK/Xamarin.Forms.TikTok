@@ -45,6 +45,18 @@
             </panCardView:CarouselView.ItemTemplate>
         </panCardView:CarouselView>
 
+        <!-- L O A D I N G -->
+        <forms:AnimationView AnimationSource="EmbeddedResource"
+                             Grid.Row="0"
+                             Grid.RowSpan="2"
+                             IsVisible="{Binding IsBusy}" 
+                             IsAnimating="True"
+                             x:DataType="viewModels:HomeViewModel"
+                             Animation="Assets.Animations.loading.json"
+                             VerticalOptions="Center"
+                             HeightRequest="80"
+                             HorizontalOptions="Center"
+                             RepeatMode="Infinite"/>
         
         <!-- T I T L E -->
         <Grid ColumnDefinitions="Auto, *, Auto"
@@ -154,16 +166,5 @@
                    Grid.Column="1"/>
         </Grid>
 
-        <forms:AnimationView AnimationSource="EmbeddedResource"
-                             Grid.Row="0"
-                             Grid.RowSpan="2"
-                             IsVisible="{Binding IsBusy}"
-                             IsAnimating="{Binding IsBusy}"
-                             x:DataType="viewModels:HomeViewModel"
-                             Animation="Assets.Animations.loading.json"
-                             VerticalOptions="Center"
-                             HeightRequest="80"
-                             HorizontalOptions="Center"
-                             RepeatMode="Infinite"/>
     </Grid>
 </ContentPage>
