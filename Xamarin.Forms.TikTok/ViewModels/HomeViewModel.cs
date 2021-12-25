@@ -41,7 +41,8 @@ namespace Xamarin.Forms.TikTok.ViewModels
                     Song = "Some music artist Artist - Music",
                     Comments = "10.6K",
                     Likes = "5.9K",
-                    Shares = "2100"
+                    Shares = "2100",
+                    ProfileImage = "profileImage.jpeg"
                 };
                 await Task.Delay(2500);
 
@@ -67,7 +68,8 @@ namespace Xamarin.Forms.TikTok.ViewModels
                     Song = "Some music artist Artist - Music",
                     Comments = "10.6K",
                     Likes = "5.9K",
-                    Shares = "2100"
+                    Shares = "2100",
+                    ProfileImage = "profileImage.jpeg"
                 },
                 new()
                 {
@@ -77,7 +79,8 @@ namespace Xamarin.Forms.TikTok.ViewModels
                     Song = "Some music artist Artist - Music",
                     Comments = "10.6K",
                     Likes = "5.9K",
-                    Shares = "1100"
+                    Shares = "1100",
+                    ProfileImage = "profileImage.jpeg"
                 },
                 new()
                 {
@@ -87,7 +90,8 @@ namespace Xamarin.Forms.TikTok.ViewModels
                     Song = "Some music artist Artist - Music",
                     Comments = "10.6K",
                     Likes = "5.9K",
-                    Shares = "100"
+                    Shares = "100",
+                    ProfileImage = "profileImage.jpeg"
                 },
                 new()
                 {
@@ -97,7 +101,8 @@ namespace Xamarin.Forms.TikTok.ViewModels
                     Song = "Some music artist Artist - Music",
                     Comments = "10.6K",
                     Likes = "5.9K",
-                    Shares = "3100"
+                    Shares = "3100",
+                    ProfileImage = "profileImage.jpeg"
                 },
                 new()
                 {
@@ -107,7 +112,8 @@ namespace Xamarin.Forms.TikTok.ViewModels
                     Song = "Some music artist Artist - Music",
                     Comments = "10.6K",
                     Likes = "5.9K",
-                    Shares = "5100"
+                    Shares = "5100",
+                    ProfileImage = "profileImage.jpeg"
                 },
                 new()
                 {
@@ -117,7 +123,8 @@ namespace Xamarin.Forms.TikTok.ViewModels
                     Song = "Some music artist Artist - Music",
                     Comments = "10.6K",
                     Likes = "5.9K",
-                    Shares = "6100"
+                    Shares = "6100",
+                    ProfileImage = "profileImage.jpeg"
                 }
             };
 

@@ -14,6 +14,7 @@ namespace Xamarin.Forms.TikTok.Models
         private string _comments;
         private string _song;
         private string _shares;
+        private string _profileImage;
 
         public string Username
         {
@@ -61,6 +62,12 @@ namespace Xamarin.Forms.TikTok.Models
         {
             get => _shares;
             set => _shares = value;
+        }
+
+        public string ProfileImage
+        {
+            get => _profileImage;
+            set => _profileImage = value;
         }
     }
 }
