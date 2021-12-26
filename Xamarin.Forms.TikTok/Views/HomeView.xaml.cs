@@ -1,14 +1,14 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using PanCardView;
+using PanCardView.EventArgs;
 using Xamarin.Forms.TikTok.ViewModels;
 using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.TikTok.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomeView : ContentPage
+    public partial class HomeView
     {
-        private HomeViewModel _homeViewModel;
+        private readonly HomeViewModel _homeViewModel;
         private bool _isRotating;
 
         public HomeView()
@@ -19,7 +19,7 @@ namespace Xamarin.Forms.TikTok.Views
             BindingContext = _homeViewModel;
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             _homeViewModel?.Appearing();
@@ -45,15 +45,16 @@ namespace Xamarin.Forms.TikTok.Views
             }
         } 
 
-        private void CarouselView_UserInteracted(PanCardView.CardsView view, PanCardView.EventArgs.UserInteractedEventArgs args)
+        private static void CarouselView_UserInteracted(CardsView view, UserInteractedEventArgs args)
         {
-            if (args.Status == PanCardView.Enums.UserInteractionStatus.Started)
+            switch (args.Status)
             {
-                MainView.DisableSwipe();
-            }
-            if (args.Status == PanCardView.Enums.UserInteractionStatus.Ended)
-            {
-                MainView.EnableSwipe();
+                case PanCardView.Enums.UserInteractionStatus.Started:
+                    MainView.DisableSwipe();
+                    break;
+                case PanCardView.Enums.UserInteractionStatus.Ended:
+                    MainView.EnableSwipe();
+                    break;
             }
         }
     }

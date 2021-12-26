@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using PanCardView.EventArgs;
 using Xamarin.Forms.TikTok.Models;
 
@@ -42,6 +41,7 @@ namespace Xamarin.Forms.TikTok.ViewModels
         public Command<object> ItemDisappearingCommand { get; set; }
         #endregion
 
+        #region Appearing / Disappearing
 
         public async void Appearing()
         {
@@ -78,7 +78,7 @@ namespace Xamarin.Forms.TikTok.ViewModels
 
         public void Disappearing()
         {
-            Items.Clear();
+            Items?.Clear();
         }
 
         private void OnItemAppearing(object obj)
@@ -91,7 +91,9 @@ namespace Xamarin.Forms.TikTok.ViewModels
                 }
             }
         }
+        #endregion
 
+        #region Create Items
 
         private void CreateItems()
         {
@@ -166,7 +168,8 @@ namespace Xamarin.Forms.TikTok.ViewModels
             };
 
             CurrentItem = Items[0];
-        }
+        } 
+        #endregion
     }
 }
 

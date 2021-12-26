@@ -1,10 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Xamarin.Forms.TikTok.Controls;assembly=Xamarin.Forms.TikTok"
              x:Class="Xamarin.Forms.TikTok.Views.DiscoverView"
-             BackgroundColor="Yellow">
-    
+             BackgroundColor="White">
 
+    <Grid RowDefinitions="Auto, *">
 
+        <!-- T I T L E  B A R-->
+        <Grid ColumnDefinitions="*, Auto"
+              Margin="10,10,10,0"
+              ColumnSpacing="15">
+            <Frame BackgroundColor="LightGray"
+                   Grid.Column="0"
+                   Padding="0">
+                <Grid ColumnDefinitions="Auto, *">
+                    <controls:CustomEntry BackgroundColor="LightGray" 
+                                          Placeholder="Search" 
+                                          PlaceholderColor="Black" 
+                                          Grid.Column="1"/>
+                    <Image Grid.Column="0" 
+                           Margin="10,0,0,0"
+                           HeightRequest="20"
+                           WidthRequest="20"
+                           Source="ic_search_black.png"/>
+                </Grid>
+            </Frame>
 
+            <Image Grid.Column="1" Source="ic_scan.png"/>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <Grid RowDefinitions="Auto, Auto, Auto"
+                  RowSpacing="10">
+                
+                <Image Grid.Row="0"
+                       Margin="0,5,0,0"
+                       Aspect="AspectFill"
+                       HeightRequest="200"
+                       Source="discoverImage.png"/>
+
+                <Grid RowDefinitions="Auto, *"
+                      Grid.Row="1">
+
+                    <Grid Grid.Row="0"
+                          Margin="10,10,0,0"
+                          ColumnDefinitions="Auto, *, Auto">
+                        
+                        <Image Grid.Column="0" 
+                               HeightRequest="40"
+                               WidthRequest="40"
+                               Source="ic_discoverIcon.png"/>
+
+                        <StackLayout Orientation="Vertical"
+                                     Grid.Column="1">
+                            <Label TextColor="Black"
+                                   FontFamily="{StaticResource TikTokFont}"
+                                   Text="Savage"/>
+                            <Label TextColor="Gray"
+                                   Text="Trending hashtag"/>
+                        </StackLayout>
+
+                        <Frame Padding="0"
+                               Margin="0,0,10,0"
+                               Grid.Column="2"
+                               BackgroundColor="LightGray">
+                            <Label FontFamily="{StaticResource TikTokFont}"
+                                   TextColor="Black"
+                                   Text="17.0 B>"
+                                   Margin="10,0,10,0"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"/>
+                        </Frame>
+
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+        </ScrollView>
+    </Grid>
 </ContentPage>
