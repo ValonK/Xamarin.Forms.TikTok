@@ -30,14 +30,14 @@ namespace Xamarin.Forms.TikTok.Views
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            _isRotating = false;
+            _isRotating = true;
             CarouselView.UserInteracted -= CarouselView_UserInteracted;
             _homeViewModel?.Disappearing();
         }
 
         private async void RotateElement(VisualElement element)
         {
-            _isRotating = true;
+            _isRotating = false;
             while (!_isRotating) 
             { 
                 await element.RotateTo(360, 1900, Easing.Linear); 
