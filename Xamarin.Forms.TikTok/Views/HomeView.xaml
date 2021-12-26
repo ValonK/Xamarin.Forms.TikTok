@@ -37,6 +37,7 @@
             x:Name="CarouselView"
             MoveThresholdDistance="20"
             ItemAppearingCommand="{Binding ItemAppearingCommand}"
+            ItemDisappearingCommand="{Binding ItemDisappearingCommand}"
             OppositePanDirectionDisablingThreshold="1"
             SelectedItem="{Binding CurrentItem}"
             IsVisible="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}" 

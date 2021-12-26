@@ -16,6 +16,13 @@ namespace Xamarin.Forms.TikTok.Models
         private string _shares;
         private string _profileImage;
         private bool _isPlaying;
+        private string _id;
+
+        public string Id
+        {
+            get => _id;
+            set => _id = value;
+        }
 
         public string Username
         {

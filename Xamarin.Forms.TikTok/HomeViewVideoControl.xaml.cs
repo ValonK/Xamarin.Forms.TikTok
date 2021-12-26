@@ -43,6 +43,8 @@ namespace Xamarin.Forms.TikTok
             else
             {
                 home._mediaElement.Stop();
+                home.Container.Children.Remove(home._mediaElement);
+                home._mediaElement = null;
             }
         }
         

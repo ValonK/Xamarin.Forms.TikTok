@@ -17,6 +17,7 @@ namespace Xamarin.Forms.TikTok.ViewModels
         public HomeViewModel()
         {
             ItemAppearingCommand = new Command<object>(OnItemAppearing);
+            ItemDisappearingCommand = new Command<object>(OnItemDissapearing);
         }
 
         #region Properties
@@ -38,6 +39,7 @@ namespace Xamarin.Forms.TikTok.ViewModels
 
         public Command<object> ItemAppearingCommand { get; set; }
 
+        public Command<object> ItemDisappearingCommand { get; set; }
         #endregion
 
 
@@ -66,11 +68,21 @@ namespace Xamarin.Forms.TikTok.ViewModels
             }
         }
 
+        private void OnItemDissapearing(object obj)
+        {
+            if (obj is ItemDisappearingEventArgs itemDisappearingEventArgs)
+            {
+                if (itemDisappearingEventArgs.Item is TikTokItem item)
+                {
+                    item.IsPlaying = false;
+                }
+            }
+        }
+
         public void Disappearing()
         {
 
         }
-
 
         private void OnItemAppearing(object obj)
         {
@@ -79,14 +91,6 @@ namespace Xamarin.Forms.TikTok.ViewModels
                 if (itemAppearedEventArgs.Item is TikTokItem item)
                 {
                     item.IsPlaying = true;
-
-                    foreach (var tikTokItem in Items)
-                    {
-                        if (tikTokItem.VideoUrl != item.VideoUrl)
-                        {
-                            tikTokItem.IsPlaying = false;
-                        }
-                    }
                 }
             }
         }
