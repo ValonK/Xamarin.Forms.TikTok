@@ -40,7 +40,10 @@
                        HeightRequest="200"
                        Source="discoverImage.png"/>
 
-                <Grid RowDefinitions="Auto, *"
+                <controls:DiscoverItemControl Title="Savage"
+                                              Subtitle="Trending hashtag"
+                                              Grid.Row="1"/>
+                <!--<Grid RowDefinitions="Auto, *"
                       Grid.Row="1">
 
                     <Grid Grid.Row="0"
@@ -75,7 +78,7 @@
 
                     </Grid>
 
-                </Grid>
+                </Grid>-->
 
             </Grid>
         </ScrollView>

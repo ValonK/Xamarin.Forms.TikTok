@@ -42,13 +42,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="HomeViewVideoControl.xaml.cs">
+    <Compile Update="Controls\HomeViewVideoControl.xaml.cs">
       <DependentUpon>HomeViewVideoControl.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="HomeViewVideoControl.xaml">
+    <EmbeddedResource Update="Controls\DiscoverItemControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\HomeViewVideoControl.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DiscoverView.xaml">

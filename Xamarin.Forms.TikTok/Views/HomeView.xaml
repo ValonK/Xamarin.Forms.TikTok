@@ -6,7 +6,7 @@
              xmlns:panCardView="clr-namespace:PanCardView;assembly=PanCardView"
              x:Class="Xamarin.Forms.TikTok.Views.HomeView"
              xmlns:tikTok="clr-namespace:Xamarin.Forms.TikTok;assembly=Xamarin.Forms.TikTok"
-             xmlns:models="clr-namespace:Xamarin.Forms.TikTok.Models;assembly=Xamarin.Forms.TikTok"
+             xmlns:models="clr-namespace:Xamarin.Forms.TikTok.Models;assembly=Xamarin.Forms.TikTok" xmlns:controls="clr-namespace:Xamarin.Forms.TikTok.Controls"
              BackgroundColor="Black">
 
     <ContentPage.Resources>
@@ -44,7 +44,7 @@
             ItemsSource="{Binding Items}">
             <panCardView:CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <tikTok:HomeViewVideoControl VideoUrl="{Binding VideoUrl}"
+                    <controls:HomeViewVideoControl VideoUrl="{Binding VideoUrl}"
                                                  IsPlaying="{Binding IsPlaying}"
                                                  x:DataType="models:TikTokItem"/>
                 </DataTemplate>

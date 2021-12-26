@@ -1,7 +1,7 @@
 ﻿using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms.Xaml;
 
-namespace Xamarin.Forms.TikTok
+namespace Xamarin.Forms.TikTok.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomeViewVideoControl : ContentView
