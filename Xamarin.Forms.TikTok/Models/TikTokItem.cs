@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Xamarin.Forms.TikTok.Models
 {
-    public class TikTokItem
+    public class TikTokItem : ObservableObject
     {
         private string _username;
         private string _fullName;
@@ -15,6 +15,7 @@ namespace Xamarin.Forms.TikTok.Models
         private string _song;
         private string _shares;
         private string _profileImage;
+        private bool _isPlaying;
 
         public string Username
         {
@@ -68,6 +69,12 @@ namespace Xamarin.Forms.TikTok.Models
         {
             get => _profileImage;
             set => _profileImage = value;
+        }
+
+        public bool IsPlaying
+        {
+            get => _isPlaying;
+            set => SetProperty(ref _isPlaying, value);
         }
     }
 }

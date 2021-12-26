@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using PanCardView.EventArgs;
 using Xamarin.Forms.TikTok.Models;
 
 namespace Xamarin.Forms.TikTok.ViewModels
@@ -7,13 +9,18 @@ namespace Xamarin.Forms.TikTok.ViewModels
     public class HomeViewModel : BaseViewModel
     {
         #region Fields
-        
+
         private ObservableCollection<TikTokItem> _items;
         private TikTokItem _currentItem;
         #endregion
 
+        public HomeViewModel()
+        {
+            ItemAppearingCommand = new Command<object>(OnItemAppearing);
+        }
+
         #region Properties
-        
+
         public ObservableCollection<TikTokItem> Items
         {
             get => _items;
@@ -24,8 +31,15 @@ namespace Xamarin.Forms.TikTok.ViewModels
         {
             get => _currentItem;
             set => SetProperty(ref _currentItem, value);
-        } 
+        }
         #endregion
+
+        #region Commands
+
+        public Command<object> ItemAppearingCommand { get; set; }
+
+        #endregion
+
 
         public async void Appearing()
         {
@@ -47,6 +61,7 @@ namespace Xamarin.Forms.TikTok.ViewModels
                 await Task.Delay(2500);
 
                 CreateItems();
+
                 IsBusy = false;
             }
         }
@@ -55,6 +70,27 @@ namespace Xamarin.Forms.TikTok.ViewModels
         {
 
         }
+
+
+        private void OnItemAppearing(object obj)
+        {
+            if (obj is ItemAppearingEventArgs itemAppearedEventArgs)
+            {
+                if (itemAppearedEventArgs.Item is TikTokItem item)
+                {
+                    item.IsPlaying = true;
+
+                    foreach (var tikTokItem in Items)
+                    {
+                        if (tikTokItem.VideoUrl != item.VideoUrl)
+                        {
+                            tikTokItem.IsPlaying = false;
+                        }
+                    }
+                }
+            }
+        }
+
 
         private void CreateItems()
         {

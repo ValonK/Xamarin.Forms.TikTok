@@ -22,7 +22,7 @@ namespace Xamarin.Forms.TikTok.Views
         {
             base.OnAppearing();
             _homeViewModel?.Appearing();
-            //CarouselView.UserInteracted += CarouselView_UserInteracted;
+            CarouselView.UserInteracted += CarouselView_UserInteracted;
             await RotateElement(ArtistImage, CancellationToken.None);
         }
 

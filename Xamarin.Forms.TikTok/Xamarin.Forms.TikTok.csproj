@@ -16,6 +16,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Assets\Videos - Copy\**" />
+    <EmbeddedResource Remove="Assets\Videos - Copy\**" />
+    <None Remove="Assets\Videos - Copy\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Assets\Animations\loading.json" />
     <None Remove="Assets\Animations\music.json" />
     <None Remove="Assets\Fonts\tiktokfont.ttf" />

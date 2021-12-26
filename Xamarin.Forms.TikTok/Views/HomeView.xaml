@@ -6,6 +6,7 @@
              xmlns:panCardView="clr-namespace:PanCardView;assembly=PanCardView"
              x:Class="Xamarin.Forms.TikTok.Views.HomeView"
              xmlns:tikTok="clr-namespace:Xamarin.Forms.TikTok;assembly=Xamarin.Forms.TikTok"
+             xmlns:models="clr-namespace:Xamarin.Forms.TikTok.Models;assembly=Xamarin.Forms.TikTok"
              BackgroundColor="Black">
 
     <ContentPage.Resources>
@@ -35,13 +36,16 @@
             IsVerticalSwipeEnabled="True"
             x:Name="CarouselView"
             MoveThresholdDistance="20"
+            ItemAppearingCommand="{Binding ItemAppearingCommand}"
             OppositePanDirectionDisablingThreshold="1"
             SelectedItem="{Binding CurrentItem}"
             IsVisible="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}" 
             ItemsSource="{Binding Items}">
             <panCardView:CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <tikTok:HomeViewVideoControl/>
+                    <tikTok:HomeViewVideoControl VideoUrl="{Binding VideoUrl}"
+                                                 IsPlaying="{Binding IsPlaying}"
+                                                 x:DataType="models:TikTokItem"/>
                 </DataTemplate>
             </panCardView:CarouselView.ItemTemplate>
         </panCardView:CarouselView>
