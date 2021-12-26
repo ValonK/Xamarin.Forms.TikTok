@@ -9,6 +9,7 @@ namespace Xamarin.Forms.TikTok.Views
     public partial class HomeView : ContentPage
     {
         private HomeViewModel _homeViewModel;
+        private bool _isRotating;
 
         public HomeView()
         {
@@ -23,18 +24,21 @@ namespace Xamarin.Forms.TikTok.Views
             base.OnAppearing();
             _homeViewModel?.Appearing();
             CarouselView.UserInteracted += CarouselView_UserInteracted;
-            await RotateElement(ArtistImage, CancellationToken.None);
+            RotateElement(ArtistImage);
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            _isRotating = false;
+            CarouselView.UserInteracted -= CarouselView_UserInteracted;
             _homeViewModel?.Disappearing();
         }
 
-        private async Task RotateElement(VisualElement element, CancellationToken cancellation)
+        private async void RotateElement(VisualElement element)
         {
-            while (!cancellation.IsCancellationRequested) 
+            _isRotating = true;
+            while (!_isRotating) 
             { 
                 await element.RotateTo(360, 1900, Easing.Linear); 
                 await element.RotateTo(0, 0);

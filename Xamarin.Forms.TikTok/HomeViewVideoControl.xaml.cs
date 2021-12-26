@@ -14,7 +14,7 @@ namespace Xamarin.Forms.TikTok
         }
 
         public static readonly BindableProperty IsPlayingProperty =
-            BindableProperty.Create (nameof(IsPlaying), typeof(bool),
+            BindableProperty.Create(nameof(IsPlaying), typeof(bool),
                 typeof(HomeViewVideoControl), false, propertyChanged: OnIsPlayingChanged);
 
         private static void OnIsPlayingChanged(BindableObject bindable, object oldvalue, object newvalue)
@@ -37,32 +37,36 @@ namespace Xamarin.Forms.TikTok
 
                     home.Container.Children.Add(home._mediaElement);
                 }
-                
+
                 home._mediaElement.Play();
             }
             else
             {
                 home._mediaElement.Stop();
-                home.Container.Children.Remove(home._mediaElement);
+                if (home.Container.Children.Contains(home._mediaElement))
+                {
+                    home.Container.Children.Remove(home._mediaElement);
+                }
+
                 home._mediaElement = null;
             }
         }
-        
+
         public bool IsPlaying
         {
-            get => (bool)GetValue (IsPlayingProperty);
-            set => SetValue (IsPlayingProperty, value);
+            get => (bool)GetValue(IsPlayingProperty);
+            set => SetValue(IsPlayingProperty, value);
         }
 
-           
+
         public static readonly BindableProperty VideoUrlProperty =
-            BindableProperty.Create (nameof(VideoUrl), typeof(string),
+            BindableProperty.Create(nameof(VideoUrl), typeof(string),
                 typeof(HomeViewVideoControl));
 
         public string VideoUrl
         {
-            get => (string)GetValue (VideoUrlProperty);
-            set => SetValue (VideoUrlProperty, value);
+            get => (string)GetValue(VideoUrlProperty);
+            set => SetValue(VideoUrlProperty, value);
         }
 
 

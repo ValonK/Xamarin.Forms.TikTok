@@ -17,7 +17,7 @@ namespace Xamarin.Forms.TikTok.ViewModels
         public HomeViewModel()
         {
             ItemAppearingCommand = new Command<object>(OnItemAppearing);
-            ItemDisappearingCommand = new Command<object>(OnItemDissapearing);
+            ItemDisappearingCommand = new Command<object>(OnItemDisapearing);
         }
 
         #region Properties
@@ -45,30 +45,27 @@ namespace Xamarin.Forms.TikTok.ViewModels
 
         public async void Appearing()
         {
-            if (Items == null)
+            IsBusy = true;
+
+            CurrentItem = new TikTokItem()
             {
-                IsBusy = true;
+                Username = "@shanselman",
+                FullName = "Scott Hanselman",
+                VideoUrl = "ms-appx:///tikvideo2.mp4",
+                Song = "Some music artist Artist - Music",
+                Comments = "10.6K",
+                Likes = "5.9K",
+                Shares = "2100",
+                ProfileImage = "profileImage.jpeg"
+            };
+            await Task.Delay(2500);
 
-                CurrentItem = new TikTokItem()
-                {
-                    Username = "@shanselman",
-                    FullName = "Scott Hanselman",
-                    VideoUrl = "ms-appx:///tikvideo2.mp4",
-                    Song = "Some music artist Artist - Music",
-                    Comments = "10.6K",
-                    Likes = "5.9K",
-                    Shares = "2100",
-                    ProfileImage = "profileImage.jpeg"
-                };
-                await Task.Delay(2500);
+            CreateItems();
 
-                CreateItems();
-
-                IsBusy = false;
-            }
+            IsBusy = false;
         }
 
-        private void OnItemDissapearing(object obj)
+        private void OnItemDisapearing(object obj)
         {
             if (obj is ItemDisappearingEventArgs itemDisappearingEventArgs)
             {
@@ -81,10 +78,7 @@ namespace Xamarin.Forms.TikTok.ViewModels
 
         public void Disappearing()
         {
-            foreach (var tikTokItem in Items)
-            {
-                tikTokItem.IsPlaying = false;
-            }
+            Items.Clear();
         }
 
         private void OnItemAppearing(object obj)
