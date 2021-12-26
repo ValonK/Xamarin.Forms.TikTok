@@ -81,7 +81,10 @@ namespace Xamarin.Forms.TikTok.ViewModels
 
         public void Disappearing()
         {
-
+            foreach (var tikTokItem in Items)
+            {
+                tikTokItem.IsPlaying = false;
+            }
         }
 
         private void OnItemAppearing(object obj)
@@ -104,7 +107,7 @@ namespace Xamarin.Forms.TikTok.ViewModels
                 {
                     Username = "@shanselman",
                     FullName = "Scott Hanselman",
-                    VideoUrl = "ms-appx:///tikvideo2.mp4",
+                    VideoUrl = "ms-appx:///tikvideo1.mp4",
                     Song = "Some music artist Artist - Music",
                     Comments = "10.6K",
                     Likes = "5.9K",
@@ -115,7 +118,7 @@ namespace Xamarin.Forms.TikTok.ViewModels
                 {
                     Username = "@shanselman",
                     FullName = "Scott Hanselman",
-                    VideoUrl = "ms-appx:///tikvideo3.mp4",
+                    VideoUrl = "ms-appx:///tikvideo2.mp4",
                     Song = "Some music artist Artist - Music",
                     Comments = "10.6K",
                     Likes = "5.9K",
@@ -126,7 +129,7 @@ namespace Xamarin.Forms.TikTok.ViewModels
                 {
                     Username = "@shanselman",
                     FullName = "Scott Hanselman",
-                    VideoUrl = "ms-appx:///tikvideo4.mp4",
+                    VideoUrl = "ms-appx:///tikvideo3.mp4",
                     Song = "Some music artist Artist - Music",
                     Comments = "10.6K",
                     Likes = "5.9K",
@@ -137,7 +140,7 @@ namespace Xamarin.Forms.TikTok.ViewModels
                 {
                     Username = "@shanselman",
                     FullName = "Scott Hanselman",
-                    VideoUrl = "ms-appx:///tikvideo5.mp4",
+                    VideoUrl = "ms-appx:///tikvideo4.mp4",
                     Song = "Some music artist Artist - Music",
                     Comments = "10.6K",
                     Likes = "5.9K",
