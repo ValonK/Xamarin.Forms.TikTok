@@ -2,7 +2,7 @@
 
 namespace Xamarin.Forms.TikTok.ViewModels
 {
-    public class BaseViewModel : ObservableObject
+    public abstract class BaseViewModel : ObservableObject
     {
         private bool _isBusy;
 
@@ -11,5 +11,8 @@ namespace Xamarin.Forms.TikTok.ViewModels
             get => _isBusy;
             set => SetProperty(ref _isBusy, value);
         }
+
+        public abstract void Appearing();
+        public abstract void Disappearing();
     }
 }

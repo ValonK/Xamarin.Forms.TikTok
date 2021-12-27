@@ -43,7 +43,7 @@ namespace Xamarin.Forms.TikTok.ViewModels
 
         #region Appearing / Disappearing
 
-        public async void Appearing()
+        public override async void Appearing()
         {
             IsBusy = true;
 
@@ -65,6 +65,11 @@ namespace Xamarin.Forms.TikTok.ViewModels
             IsBusy = false;
         }
 
+        public override void Disappearing()
+        {
+            Items?.Clear();
+        }
+
         private void OnItemDisapearing(object obj)
         {
             if (obj is ItemDisappearingEventArgs itemDisappearingEventArgs)
@@ -74,11 +79,6 @@ namespace Xamarin.Forms.TikTok.ViewModels
                     item.IsPlaying = false;
                 }
             }
-        }
-
-        public void Disappearing()
-        {
-            Items?.Clear();
         }
 
         private void OnItemAppearing(object obj)

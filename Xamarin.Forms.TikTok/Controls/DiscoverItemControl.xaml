@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:panCardView="clr-namespace:PanCardView;assembly=PanCardView"
              x:Class="Xamarin.Forms.TikTok.Controls.DiscoverItemControl"
              x:Name="Root">
-    
-    <Grid RowDefinitions="Auto, *"
-                      Grid.Row="1">
+
+    <Grid RowDefinitions="Auto, *">
 
         <Grid Grid.Row="0"
-                          Margin="10,10,0,0"
-                          ColumnDefinitions="Auto, *, Auto">
+              Margin="10,10,0,0"
+              ColumnDefinitions="Auto, *, Auto">
 
             <Image Grid.Column="0" 
-                               HeightRequest="40"
-                               WidthRequest="40"
-                               Source="ic_discoverIcon.png"/>
+                   HeightRequest="40"
+                   WidthRequest="40"
+                   Source="ic_discoverIcon.png"/>
 
             <StackLayout Orientation="Vertical"
-                                     Grid.Column="1">
+                         Grid.Column="1">
                 <Label TextColor="Black"
                                    FontFamily="{StaticResource TikTokFont}"
                                    Text="{Binding Source={x:Reference Root}, Path=Title}"/>
@@ -25,19 +25,35 @@
                                    Text="{Binding Source={x:Reference Root}, Path=Subtitle}"/>
             </StackLayout>
 
-            <Frame Padding="0"
-                               Margin="0,0,10,0"
-                               Grid.Column="2"
-                               BackgroundColor="LightGray">
-                <Label FontFamily="{StaticResource TikTokFont}"
+            <Label FontFamily="{StaticResource TikTokFont}"
                                    TextColor="Black"
                                    Text="17.0 B>"
-                                   Margin="10,0,10,0"
+                                   FontSize="10"
+                                   Padding="10,0,10,0"
+                                   Grid.Column="2"
+                                   BackgroundColor="LightGray"
+                                   Margin="10,10,10,10"
                                    HorizontalTextAlignment="Center"
                                    VerticalTextAlignment="Center"/>
-            </Frame>
 
         </Grid>
 
+        <Grid Grid.Row="1">
+
+            <CollectionView ItemsSource="{Binding Source={x:Reference Root}, Path=Items}"
+                            HeightRequest="170">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="0"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Image}"
+                               WidthRequest="110"
+                               HorizontalOptions="Center"
+                               IsAnimationPlaying="{Binding IsAnimating}"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </Grid>
 </ContentView>

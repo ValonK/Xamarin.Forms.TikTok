@@ -42,44 +42,13 @@
 
                 <controls:DiscoverItemControl Title="Savage"
                                               Subtitle="Trending hashtag"
+                                              Items="{Binding Items}"
                                               Grid.Row="1"/>
-                <!--<Grid RowDefinitions="Auto, *"
-                      Grid.Row="1">
 
-                    <Grid Grid.Row="0"
-                          Margin="10,10,0,0"
-                          ColumnDefinitions="Auto, *, Auto">
-                        
-                        <Image Grid.Column="0" 
-                               HeightRequest="40"
-                               WidthRequest="40"
-                               Source="ic_discoverIcon.png"/>
-
-                        <StackLayout Orientation="Vertical"
-                                     Grid.Column="1">
-                            <Label TextColor="Black"
-                                   FontFamily="{StaticResource TikTokFont}"
-                                   Text="Savage"/>
-                            <Label TextColor="Gray"
-                                   Text="Trending hashtag"/>
-                        </StackLayout>
-
-                        <Frame Padding="0"
-                               Margin="0,0,10,0"
-                               Grid.Column="2"
-                               BackgroundColor="LightGray">
-                            <Label FontFamily="{StaticResource TikTokFont}"
-                                   TextColor="Black"
-                                   Text="17.0 B>"
-                                   Margin="10,0,10,0"
-                                   HorizontalTextAlignment="Center"
-                                   VerticalTextAlignment="Center"/>
-                        </Frame>
-
-                    </Grid>
-
-                </Grid>-->
-
+                <controls:DiscoverItemControl Title="In 2022"
+                                              Subtitle="Trending effect"
+                                              Items="{Binding Items}"
+                                              Grid.Row="2"/>
             </Grid>
         </ScrollView>
     </Grid>
