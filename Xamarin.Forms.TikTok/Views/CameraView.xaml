@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Xamarin.Forms.TikTok.Views.CameraView">
+    <Grid>
+        <xct:CameraView
+                x:Name="cameraView"
+                CaptureMode="Video"
+                FlashMode="On"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" />
+    </Grid>
+</ContentPage>
