@@ -3,13 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Xamarin.Forms.TikTok.Views;assembly=Xamarin.Forms.TikTok"
              xmlns:androidSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:helpers="clr-namespace:Xamarin.Forms.TikTok.Helpers;assembly=Xamarin.Forms.TikTok"
              x:Class="Xamarin.Forms.TikTok.Views.MainView"
              androidSpecific:TabbedPage.ToolbarPlacement="Bottom"
              androidSpecific:TabbedPage.IsSmoothScrollEnabled="false"
-             BarBackgroundColor="Black">
-    <views:HomeView IconImageSource="ic_home.png" Title="Home"/>
-    <views:DiscoverView IconImageSource="ic_discover.png" Title="Discover"/>
-    <views:RecordView IconImageSource="ic_add.png"/>
-    <views:InboxView IconImageSource="ic_inbox.png" Title="Inbox"/>
-    <views:ProfileView IconImageSource="ic_user.png" Title="Profile"/>
+             BarBackgroundColor="Black" 
+             CurrentPageChanged="MainView_OnCurrentPageChanged">
+
+    <views:HomeView IconImageSource="{x:Static helpers:UiHelper.HomeIconWhite}" 
+                    Title="Home"/>
+    
+    <views:DiscoverView IconImageSource="{x:Static helpers:UiHelper.DiscoverIconWhite}"
+                        Title="Discover"/>
+    
+    <views:RecordView IconImageSource="{x:Static helpers:UiHelper.AddIconWhite}"/>
+    
+    <views:InboxView IconImageSource="{x:Static helpers:UiHelper.InboxIconWhite}" 
+                     Title="Inbox"/>
+
+    <views:ProfileView IconImageSource="{x:Static helpers:UiHelper.ProfileIconWhite}" 
+                       Title="Profile"/>
 </TabbedPage>
