@@ -1,6 +1,6 @@
 ﻿using PanCardView;
 using PanCardView.EventArgs;
-using Xamarin.Forms.TikTok.ViewModels;
+using Xamarin.Forms.TikTok.Core.ViewModels;
 using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.TikTok.Views
@@ -22,7 +22,6 @@ namespace Xamarin.Forms.TikTok.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _homeViewModel?.Appearing();
             CarouselView.UserInteracted += CarouselView_UserInteracted;
             RotateElement(ArtistImage);
         }
@@ -32,7 +31,6 @@ namespace Xamarin.Forms.TikTok.Views
             base.OnDisappearing();
             _isRotating = true;
             CarouselView.UserInteracted -= CarouselView_UserInteracted;
-            _homeViewModel?.Disappearing();
         }
 
         private async void RotateElement(VisualElement element)

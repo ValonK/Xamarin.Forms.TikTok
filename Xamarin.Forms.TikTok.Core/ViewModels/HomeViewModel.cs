@@ -1,9 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using MvvmCross.Commands;
 using PanCardView.EventArgs;
+using Xamarin.Forms.TikTok.Core.ViewModels._Base;
 using Xamarin.Forms.TikTok.Models;
 
-namespace Xamarin.Forms.TikTok.ViewModels
+namespace Xamarin.Forms.TikTok.Core.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
@@ -11,12 +13,13 @@ namespace Xamarin.Forms.TikTok.ViewModels
 
         private ObservableCollection<TikTokItem> _items;
         private TikTokItem _currentItem;
+
         #endregion
 
         public HomeViewModel()
         {
-            ItemAppearingCommand = new Command<object>(OnItemAppearing);
-            ItemDisappearingCommand = new Command<object>(OnItemDisapearing);
+            ItemAppearingCommand = new MvxCommand<ItemAppearingEventArgs>(OnItemAppearing);
+            ItemDisappearingCommand = new MvxCommand<ItemDisappearingEventArgs>(OnItemDisapearing);
         }
 
         #region Properties
@@ -32,18 +35,20 @@ namespace Xamarin.Forms.TikTok.ViewModels
             get => _currentItem;
             set => SetProperty(ref _currentItem, value);
         }
+
         #endregion
 
         #region Commands
 
-        public Command<object> ItemAppearingCommand { get; set; }
+        public IMvxCommand<ItemAppearingEventArgs> ItemAppearingCommand { get; }
 
-        public Command<object> ItemDisappearingCommand { get; set; }
+        public IMvxCommand<ItemDisappearingEventArgs> ItemDisappearingCommand { get; }
+
         #endregion
 
         #region Appearing / Disappearing
 
-        public override async void Appearing()
+        public override async void ViewAppearing()
         {
             IsBusy = true;
 
@@ -65,32 +70,27 @@ namespace Xamarin.Forms.TikTok.ViewModels
             IsBusy = false;
         }
 
-        public override void Disappearing()
+        public override void ViewDisappearing()
         {
-            Items?.Clear();
+            Items.Clear();
         }
 
-        private void OnItemDisapearing(object obj)
+        private void OnItemDisapearing(ItemDisappearingEventArgs eventArgs)
         {
-            if (obj is ItemDisappearingEventArgs itemDisappearingEventArgs)
+            if (eventArgs.Item is TikTokItem item)
             {
-                if (itemDisappearingEventArgs.Item is TikTokItem item)
-                {
-                    item.IsPlaying = false;
-                }
+                item.IsPlaying = false;
             }
         }
 
-        private void OnItemAppearing(object obj)
+        private void OnItemAppearing(ItemAppearingEventArgs eventArgs)
         {
-            if (obj is ItemAppearingEventArgs itemAppearedEventArgs)
+            if (eventArgs.Item is TikTokItem item)
             {
-                if (itemAppearedEventArgs.Item is TikTokItem item)
-                {
-                    item.IsPlaying = true;
-                }
+                item.IsPlaying = true;
             }
         }
+
         #endregion
 
         #region Create Items
@@ -168,7 +168,8 @@ namespace Xamarin.Forms.TikTok.ViewModels
             };
 
             CurrentItem = Items[0];
-        } 
+        }
+
         #endregion
     }
 }

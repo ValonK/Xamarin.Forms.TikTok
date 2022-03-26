@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <LangVersion>latest</LangVersion>
+    <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,9 +46,11 @@
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <LangVersion>latest</LangVersion>
+    <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Android.Export" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -61,6 +64,9 @@
     </PackageReference>
     <PackageReference Include="LibVLCSharp.Forms">
       <Version>3.6.4</Version>
+    </PackageReference>
+    <PackageReference Include="MvvmCross.Forms">
+      <Version>8.0.2</Version>
     </PackageReference>
     <PackageReference Include="VideoLAN.LibVLC.Android">
       <Version>3.2.0.1</Version>
@@ -77,6 +83,7 @@
     <Compile Include="Renderers\CustomTabbedPageRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Setup.cs" />
     <Compile Include="SplashActivity.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +112,10 @@
     <AndroidResource Include="Resources\values\dimens.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Xamarin.Forms.TikTok.Core\Xamarin.Forms.TikTok.Core.csproj">
+      <Project>{e8b077be-4d17-4e82-8485-bc63d9d00738}</Project>
+      <Name>Xamarin.Forms.TikTok.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Xamarin.Forms.TikTok\Xamarin.Forms.TikTok.csproj">
       <Project>{2A8E51A2-06F1-455F-9D1C-31C121E0591F}</Project>
       <Name>Xamarin.Forms.TikTok</Name>

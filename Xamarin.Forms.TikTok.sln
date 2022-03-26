@@ -7,7 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.Forms.TikTok.Androi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.Forms.TikTok.iOS", "Xamarin.Forms.TikTok.iOS\Xamarin.Forms.TikTok.iOS.csproj", "{352CE589-033B-4E81-8296-0144939F7996}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.Forms.TikTok", "Xamarin.Forms.TikTok\Xamarin.Forms.TikTok.csproj", "{DEDF50BA-7BBF-4A76-B511-CE768FAFB68E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xamarin.Forms.TikTok", "Xamarin.Forms.TikTok\Xamarin.Forms.TikTok.csproj", "{DEDF50BA-7BBF-4A76-B511-CE768FAFB68E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{2289127C-9E64-4DC8-8B73-2E390E6D517D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "platforms", "platforms", "{E9D306DA-C6C2-430E-B8E9-1D5FC7772CBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.Forms.TikTok.Core", "Xamarin.Forms.TikTok.Core\Xamarin.Forms.TikTok.Core.csproj", "{E8B077BE-4D17-4E82-8485-BC63D9D00738}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,9 +79,27 @@ Global
 		{DEDF50BA-7BBF-4A76-B511-CE768FAFB68E}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{DEDF50BA-7BBF-4A76-B511-CE768FAFB68E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{DEDF50BA-7BBF-4A76-B511-CE768FAFB68E}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
+		{E8B077BE-4D17-4E82-8485-BC63D9D00738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8B077BE-4D17-4E82-8485-BC63D9D00738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8B077BE-4D17-4E82-8485-BC63D9D00738}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{E8B077BE-4D17-4E82-8485-BC63D9D00738}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{E8B077BE-4D17-4E82-8485-BC63D9D00738}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{E8B077BE-4D17-4E82-8485-BC63D9D00738}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{E8B077BE-4D17-4E82-8485-BC63D9D00738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8B077BE-4D17-4E82-8485-BC63D9D00738}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8B077BE-4D17-4E82-8485-BC63D9D00738}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{E8B077BE-4D17-4E82-8485-BC63D9D00738}.Release|iPhone.Build.0 = Release|Any CPU
+		{E8B077BE-4D17-4E82-8485-BC63D9D00738}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{E8B077BE-4D17-4E82-8485-BC63D9D00738}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5BB3FB0B-8078-4580-B203-174C59EF3A48} = {E9D306DA-C6C2-430E-B8E9-1D5FC7772CBB}
+		{352CE589-033B-4E81-8296-0144939F7996} = {E9D306DA-C6C2-430E-B8E9-1D5FC7772CBB}
+		{DEDF50BA-7BBF-4A76-B511-CE768FAFB68E} = {2289127C-9E64-4DC8-8B73-2E390E6D517D}
+		{E8B077BE-4D17-4E82-8485-BC63D9D00738} = {2289127C-9E64-4DC8-8B73-2E390E6D517D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2D6D60A7-FE43-4D49-BA22-5BB4868F5790}

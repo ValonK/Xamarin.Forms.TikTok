@@ -7,6 +7,8 @@
              x:Class="Xamarin.Forms.TikTok.Views.HomeView"
              xmlns:tikTok="clr-namespace:Xamarin.Forms.TikTok;assembly=Xamarin.Forms.TikTok"
              xmlns:models="clr-namespace:Xamarin.Forms.TikTok.Models;assembly=Xamarin.Forms.TikTok" xmlns:controls="clr-namespace:Xamarin.Forms.TikTok.Controls"
+             xmlns:models1="clr-namespace:Xamarin.Forms.TikTok.Models;assembly=Xamarin.Forms.TikTok.Core"
+             xmlns:viewModels1="clr-namespace:Xamarin.Forms.TikTok.Core.ViewModels;assembly=Xamarin.Forms.TikTok.Core"
              BackgroundColor="Black">
 
     <ContentPage.Resources>
@@ -46,7 +48,7 @@
                 <DataTemplate>
                     <controls:HomeViewVideoControl VideoUrl="{Binding VideoUrl}"
                                                  IsPlaying="{Binding IsPlaying}"
-                                                 x:DataType="models:TikTokItem"/>
+                                                 x:DataType="models1:TikTokItem"/>
                 </DataTemplate>
             </panCardView:CarouselView.ItemTemplate>
         </panCardView:CarouselView>
@@ -57,7 +59,7 @@
                              Grid.RowSpan="2"
                              IsVisible="{Binding IsBusy}" 
                              IsAnimating="True"
-                             x:DataType="viewModels:HomeViewModel"
+                             x:DataType="viewModels1:HomeViewModel"
                              Animation="Assets.Animations.loading.json"
                              VerticalOptions="Center"
                              HeightRequest="80"
@@ -112,7 +114,7 @@
                      HorizontalOptions="End"
                      VerticalOptions="End"
                      Margin="0,0,10,50"
-                     x:DataType="viewModels:HomeViewModel">
+                     x:DataType="viewModels1:HomeViewModel">
 
             <StackLayout>        
                 <Image Source="profileImage.jpeg"
@@ -163,7 +165,7 @@
 
             <StackLayout Orientation="Vertical"
                          Grid.Column="0"
-                         x:DataType="viewModels:HomeViewModel">
+                         x:DataType="viewModels1:HomeViewModel">
 
                 <Label FontFamily="{StaticResource TikTokFont}"
                        TextColor="White"

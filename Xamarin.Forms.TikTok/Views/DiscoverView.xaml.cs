@@ -1,10 +1,10 @@
-﻿using Xamarin.Forms.TikTok.ViewModels;
+﻿using Xamarin.Forms.TikTok.Core.ViewModels;
 using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.TikTok.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DiscoverView : ContentPage
+    public partial class DiscoverView 
     {
         private DiscoverViewModel _discoverViewModel;
 
@@ -15,18 +15,6 @@ namespace Xamarin.Forms.TikTok.Views
 
             _discoverViewModel = new DiscoverViewModel();
             BindingContext = _discoverViewModel;
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            _discoverViewModel.Appearing();
-        }
-
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            _discoverViewModel.Disappearing();
         }
     }
 }

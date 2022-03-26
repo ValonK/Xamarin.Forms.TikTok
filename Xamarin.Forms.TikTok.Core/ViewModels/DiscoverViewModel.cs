@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
-using System.Threading.Tasks;
+using Xamarin.Forms.TikTok.Core.ViewModels._Base;
 using Xamarin.Forms.TikTok.Models;
 
-namespace Xamarin.Forms.TikTok.ViewModels
+namespace Xamarin.Forms.TikTok.Core.ViewModels
 {
     public class DiscoverViewModel : BaseViewModel
     {
@@ -18,7 +18,7 @@ namespace Xamarin.Forms.TikTok.ViewModels
 
         #endregion
 
-        public override async void Appearing()
+        public override void ViewAppearing()
         {
             Items = new ObservableCollection<DiscoverItem>
             {
@@ -43,11 +43,6 @@ namespace Xamarin.Forms.TikTok.ViewModels
                     IsAnimating = false
                 },
             };
-        }
-
-        public override void Disappearing()
-        {
-
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Xamarin.Forms.TikTok.Models;
 using Xamarin.Forms.Xaml;
 
