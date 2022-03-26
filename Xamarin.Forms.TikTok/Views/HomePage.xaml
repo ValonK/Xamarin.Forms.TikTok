@@ -1,17 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
-             xmlns:viewModels="clr-namespace:Xamarin.Forms.TikTok.ViewModels;assembly=Xamarin.Forms.TikTok"
-             xmlns:panCardView="clr-namespace:PanCardView;assembly=PanCardView"
-             x:Class="Xamarin.Forms.TikTok.Views.HomeView"
-             xmlns:tikTok="clr-namespace:Xamarin.Forms.TikTok;assembly=Xamarin.Forms.TikTok"
-             xmlns:models="clr-namespace:Xamarin.Forms.TikTok.Models;assembly=Xamarin.Forms.TikTok" xmlns:controls="clr-namespace:Xamarin.Forms.TikTok.Controls"
-             xmlns:models1="clr-namespace:Xamarin.Forms.TikTok.Models;assembly=Xamarin.Forms.TikTok.Core"
-             xmlns:viewModels1="clr-namespace:Xamarin.Forms.TikTok.Core.ViewModels;assembly=Xamarin.Forms.TikTok.Core"
-             BackgroundColor="Black">
+<views:MvxContentPage x:TypeArguments="viewModels1:HomeViewModel"
+                      xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+                      xmlns:panCardView="clr-namespace:PanCardView;assembly=PanCardView"
+                      x:Class="Xamarin.Forms.TikTok.Views.HomePage"
+                      xmlns:controls="clr-namespace:Xamarin.Forms.TikTok.Controls"
+                      xmlns:models1="clr-namespace:Xamarin.Forms.TikTok.Models;assembly=Xamarin.Forms.TikTok.Core"
+                      xmlns:viewModels1="clr-namespace:Xamarin.Forms.TikTok.Core.ViewModels;assembly=Xamarin.Forms.TikTok.Core"
+                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      BackgroundColor="Black"
+                      IconImageSource="ic_home.png"
+                      Title="Home">
 
-    <ContentPage.Resources>
+    <views:MvxContentPage.Resources>
         <ResourceDictionary>
 
             <Style TargetType="Label" x:Key="SideLabelStyle">
@@ -26,7 +28,7 @@
                 <Setter Property="WidthRequest" Value="22"/>
             </Style>
         </ResourceDictionary>
-    </ContentPage.Resources>
+    </views:MvxContentPage.Resources>
 
 
     <Grid RowDefinitions="*, Auto">
@@ -192,4 +194,4 @@
         </Grid>
 
     </Grid>
-</ContentPage>
+</views:MvxContentPage>

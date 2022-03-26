@@ -1,6 +1,8 @@
-﻿namespace Xamarin.Forms.TikTok.Core.ViewModels
+﻿using Xamarin.Forms.TikTok.Core.ViewModels._Base;
+
+namespace Xamarin.Forms.TikTok.Core.ViewModels
 {
-    internal class ProfileViewModel
+    public class ProfileViewModel : BaseViewModel
     {
     }
 }

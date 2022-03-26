@@ -1,9 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Xamarin.Forms.TikTok.Controls;assembly=Xamarin.Forms.TikTok"
-             x:Class="Xamarin.Forms.TikTok.Views.DiscoverView"
-             BackgroundColor="White">
+             xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:viewModels="clr-namespace:Xamarin.Forms.TikTok.Core.ViewModels;assembly=Xamarin.Forms.TikTok.Core"
+             x:Class="Xamarin.Forms.TikTok.Views.DiscoverPage"
+             x:TypeArguments="viewModels:DiscoverViewModel"
+             BackgroundColor="White"
+             IconImageSource="ic_discover.png" 
+             Title="Discover">
 
     <Grid RowDefinitions="Auto, *">
 
@@ -52,4 +57,4 @@
             </Grid>
         </ScrollView>
     </Grid>
-</ContentPage>
+</views:MvxContentPage>

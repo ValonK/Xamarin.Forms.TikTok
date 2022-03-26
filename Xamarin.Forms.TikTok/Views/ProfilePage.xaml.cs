@@ -5,10 +5,10 @@ using Xamarin.Forms.Xaml;
 namespace Xamarin.Forms.TikTok.Views;
 
 [XamlCompilation(XamlCompilationOptions.Compile)]
-[MvxContentPagePresentation(NoHistory = false, WrapInNavigationPage = true, ViewModelType = typeof(InboxViewModel))]
-public partial class InboxView
+[MvxContentPagePresentation(NoHistory = false, WrapInNavigationPage = true, ViewModelType = typeof(ProfileViewModel))]
+public partial class ProfilePage 
 {
-    public InboxView()
+    public ProfilePage()
     {
         InitializeComponent();
     }

@@ -1,24 +1,30 @@
 ﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
 using Android.OS;
+using Android.Runtime;
 using MvvmCross.Forms.Platforms.Android.Views;
 using PanCardView.Droid;
+using Plugin.CurrentActivity;
 using Xamarin.Forms.Platform.Android;
 
-namespace Xamarin.Forms.TikTok.Droid;
+namespace Xamarin.Forms.TikTok.Droid.Views;
 
-[Activity(Label = "Xamarin.Forms.TikTok",
-    Icon = "@mipmap/icon",
-    Theme = "@style/MainTheme", 
-    MainLauncher = false,
-    ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
+[Activity(Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 public class MainActivity : MvxFormsAppCompatActivity
 {
+    public static MainActivity MainActivityInstance;
+
     protected override void OnCreate(Bundle bundle)
     {
-        base.OnCreate(bundle);
+        MainActivityInstance = this;
+        CrossCurrentActivity.Current.Activity = this;
+        RequestedOrientation = ScreenOrientation.Portrait;
+
+        TabLayoutResource = Resource.Layout.Tabbar;
+        ToolbarResource = Resource.Layout.Toolbar;
         InitializePackages(bundle);
+
+        base.OnCreate(bundle);
         Window?.SetStatusBarColor(Color.Black.ToAndroid());
     }
 
@@ -28,9 +34,10 @@ public class MainActivity : MvxFormsAppCompatActivity
         base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
-    private void InitializePackages(Bundle savedInstanceState)
+    private void InitializePackages(Bundle bundle)
     {
-        Essentials.Platform.Init(this, savedInstanceState);
+        CrossCurrentActivity.Current.Init(this, bundle);
+        Essentials.Platform.Init(this, bundle);
         CardsViewRenderer.Preserve(); 
     }
 }
