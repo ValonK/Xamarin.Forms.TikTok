@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 
-namespace Xamarin.Forms.TikTok.Models
+namespace Xamarin.Forms.TikTok.Core.Models
 {
     public class ObservableObject : INotifyPropertyChanged
     {

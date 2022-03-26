@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using Xamarin.Forms.TikTok.Core.Models;
 using Xamarin.Forms.TikTok.Core.ViewModels._Base;
-using Xamarin.Forms.TikTok.Models;
 
 namespace Xamarin.Forms.TikTok.Core.ViewModels
 {

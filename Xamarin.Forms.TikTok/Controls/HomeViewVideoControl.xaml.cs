@@ -4,7 +4,7 @@ using Xamarin.Forms.Xaml;
 namespace Xamarin.Forms.TikTok.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomeViewVideoControl : ContentView
+    public partial class HomeViewVideoControl
     {
         private MediaElement _mediaElement;
 
@@ -19,7 +19,7 @@ namespace Xamarin.Forms.TikTok.Controls
 
         private static void OnIsPlayingChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            if (!(bindable is HomeViewVideoControl home))
+            if (bindable is not HomeViewVideoControl home)
             {
                 return;
             }
@@ -68,7 +68,5 @@ namespace Xamarin.Forms.TikTok.Controls
             get => (string)GetValue(VideoUrlProperty);
             set => SetValue(VideoUrlProperty, value);
         }
-
-
     }
 }

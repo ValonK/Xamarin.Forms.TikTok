@@ -9,8 +9,8 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels._Base
 
         public override void ViewDestroy(bool viewFinishing = true)
         {
-            if (viewFinishing && CloseCompletionSource?.Task.IsCompleted == false && !CloseCompletionSource.Task.IsFaulted)
-                CloseCompletionSource?.TrySetCanceled();
+            if (viewFinishing && CloseCompletionSource.Task.IsCompleted == false && !CloseCompletionSource.Task.IsFaulted)
+                CloseCompletionSource.TrySetCanceled();
 
             base.ViewDestroy(viewFinishing);
         }

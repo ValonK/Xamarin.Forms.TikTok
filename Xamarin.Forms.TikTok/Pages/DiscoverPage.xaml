@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Xamarin.Forms.TikTok.Controls;assembly=Xamarin.Forms.TikTok"
+             xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:viewModels="clr-namespace:Xamarin.Forms.TikTok.Core.ViewModels;assembly=Xamarin.Forms.TikTok.Core"
+             x:Class="Xamarin.Forms.TikTok.Pages.DiscoverPage"
+             x:TypeArguments="viewModels:DiscoverViewModel"
+             BackgroundColor="White"
+             IconImageSource="ic_discover.png" 
+             Title="Discover">
+
+    <Grid RowDefinitions="Auto, *">
+
+        <!-- T I T L E  B A R-->
+        <Grid ColumnDefinitions="*, Auto"
+              Margin="10,10,10,0"
+              ColumnSpacing="15">
+            <Frame BackgroundColor="LightGray"
+                   Grid.Column="0"
+                   Padding="0">
+                <Grid ColumnDefinitions="Auto, *">
+                    <controls:CustomEntry BackgroundColor="LightGray" 
+                                          Placeholder="Search" 
+                                          PlaceholderColor="Black" 
+                                          Grid.Column="1"/>
+                    <Image Grid.Column="0" 
+                           Margin="10,0,0,0"
+                           HeightRequest="20"
+                           WidthRequest="20"
+                           Source="ic_search_black.png"/>
+                </Grid>
+            </Frame>
+
+            <Image Grid.Column="1" Source="ic_scan.png"/>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <Grid RowDefinitions="Auto, Auto, Auto"
+                  RowSpacing="10">
+                
+                <Image Grid.Row="0"
+                       Margin="0,5,0,0"
+                       Aspect="AspectFill"
+                       HeightRequest="200"
+                       Source="discoverImage.png"/>
+
+                <controls:DiscoverItemControl Title="Savage"
+                                              Subtitle="Trending hashtag"
+                                              Items="{Binding Items}"
+                                              Grid.Row="1"/>
+
+                <controls:DiscoverItemControl Title="In 2022"
+                                              Subtitle="Trending effect"
+                                              Items="{Binding Items}"
+                                              Grid.Row="2"/>
+            </Grid>
+        </ScrollView>
+    </Grid>
+</views:MvxContentPage>

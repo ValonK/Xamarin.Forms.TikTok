@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using MvvmCross.Commands;
 using PanCardView.EventArgs;
+using Xamarin.Forms.TikTok.Core.Models;
 using Xamarin.Forms.TikTok.Core.ViewModels._Base;
-using Xamarin.Forms.TikTok.Models;
 
 namespace Xamarin.Forms.TikTok.Core.ViewModels
 {
@@ -22,7 +22,6 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
             ItemDisappearingCommand = new MvxCommand<ItemDisappearingEventArgs>(OnItemDisapearing);
         }
 
-        #region Properties
 
         public ObservableCollection<TikTokItem> Items
         {
@@ -35,19 +34,12 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
             get => _currentItem;
             set => SetProperty(ref _currentItem, value);
         }
-
-        #endregion
-
-        #region Commands
+        
 
         public IMvxCommand<ItemAppearingEventArgs> ItemAppearingCommand { get; }
 
         public IMvxCommand<ItemDisappearingEventArgs> ItemDisappearingCommand { get; }
-
-        #endregion
-
-        #region Appearing / Disappearing
-
+        
         public override async void ViewAppearing()
         {
             IsBusy = true;
@@ -72,7 +64,7 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
 
         public override void ViewDisappearing()
         {
-            Items.Clear();
+            Items?.Clear();
         }
 
         private void OnItemDisapearing(ItemDisappearingEventArgs eventArgs)
@@ -90,10 +82,6 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
                 item.IsPlaying = true;
             }
         }
-
-        #endregion
-
-        #region Create Items
 
         private void CreateItems()
         {
@@ -169,8 +157,6 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
 
             CurrentItem = Items[0];
         }
-
-        #endregion
     }
 }
 

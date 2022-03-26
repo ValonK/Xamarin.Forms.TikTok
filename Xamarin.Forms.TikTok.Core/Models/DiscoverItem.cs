@@ -1,4 +1,4 @@
-﻿namespace Xamarin.Forms.TikTok.Models
+﻿namespace Xamarin.Forms.TikTok.Core.Models
 {
     public class DiscoverItem : ObservableObject
     {

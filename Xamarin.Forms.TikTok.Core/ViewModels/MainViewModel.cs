@@ -8,12 +8,24 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
     {
         private readonly IMvxNavigationService _mvxNavigationService;
 
+        private bool _tabsLoaded;
+
+        
         public MainViewModel(IMvxNavigationService mvxNavigationService)
         {
             _mvxNavigationService = mvxNavigationService;
         }
+
+        public override async void ViewAppearing()
+        {
+            base.ViewAppearing();
+
+            if (_tabsLoaded != false) return;
+            await SetupTabsAsync();
+            _tabsLoaded = true;
+        }
         
-        public async Task SetupTabsAsync()
+        private async Task SetupTabsAsync()
         {
             await _mvxNavigationService.Navigate(typeof(HomeViewModel));
             await _mvxNavigationService.Navigate(typeof(DiscoverViewModel));

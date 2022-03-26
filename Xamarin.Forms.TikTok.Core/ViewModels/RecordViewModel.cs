@@ -1,6 +1,7 @@
-﻿namespace Xamarin.Forms.TikTok.Core.ViewModels
+﻿using Xamarin.Forms.TikTok.Core.ViewModels._Base;
+
+namespace Xamarin.Forms.TikTok.Core.ViewModels;
+
+public class RecordViewModel : BaseViewModel
 {
-    internal class RecordViewModel
-    {
-    }
 }

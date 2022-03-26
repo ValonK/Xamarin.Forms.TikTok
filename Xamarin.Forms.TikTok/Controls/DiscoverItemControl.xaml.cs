@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Xamarin.Forms.TikTok.Models;
+using Xamarin.Forms.TikTok.Core.Models;
 using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.TikTok.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DiscoverItemControl : ContentView
+    public partial class DiscoverItemControl
     {
         public DiscoverItemControl()
         {

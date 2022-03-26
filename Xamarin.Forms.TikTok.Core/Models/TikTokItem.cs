@@ -1,87 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Xamarin.Forms.TikTok.Core.Models;
 
-namespace Xamarin.Forms.TikTok.Models
+public class TikTokItem : ObservableObject
 {
-    public class TikTokItem : ObservableObject
+    private bool _isPlaying;
+
+    public string Id { get; set; }
+
+    public string Username { get; set; }
+
+    public string FullName { get; set; }
+
+    public string Description { get; set; }
+
+    public string VideoUrl { get; set; }
+
+    public string Likes { get; set; }
+
+    public string Comments { get; set; }
+
+    public string Song { get; set; }
+
+    public string Shares { get; set; }
+
+    public string ProfileImage { get; set; }
+
+    public bool IsPlaying
     {
-        private string _username;
-        private string _fullName;
-        private string _description;
-        private string _videoUrl;
-        private string _likes;
-        private string _comments;
-        private string _song;
-        private string _shares;
-        private string _profileImage;
-        private bool _isPlaying;
-        private string _id;
-
-        public string Id
-        {
-            get => _id;
-            set => _id = value;
-        }
-
-        public string Username
-        {
-            get => _username;
-            set => _username = value;
-        }
-
-        public string FullName
-        {
-            get => _fullName;
-            set => _fullName = value;
-        }
-
-        public string Description
-        {
-            get => _description;
-            set => _description = value;
-        }
-
-        public string VideoUrl
-        {
-            get => _videoUrl;
-            set => _videoUrl = value;
-        }
-
-        public string Likes
-        {
-            get => _likes;
-            set => _likes = value;
-        }
-
-        public string Comments
-        {
-            get => _comments;
-            set => _comments = value;
-        }
-
-        public string Song
-        {
-            get => _song;
-            set => _song = value;
-        }
-
-        public string Shares
-        {
-            get => _shares;
-            set => _shares = value;
-        }
-
-        public string ProfileImage
-        {
-            get => _profileImage;
-            set => _profileImage = value;
-        }
-
-        public bool IsPlaying
-        {
-            get => _isPlaying;
-            set => SetProperty(ref _isPlaying, value);
-        }
+        get => _isPlaying;
+        set => SetProperty(ref _isPlaying, value);
     }
 }
