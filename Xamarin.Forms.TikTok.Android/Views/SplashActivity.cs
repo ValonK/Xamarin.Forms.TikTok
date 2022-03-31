@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using MvvmCross.Forms.Platforms.Android.Views;
+using Xamarin.Forms.Platform.Android;
 
 namespace Xamarin.Forms.TikTok.Droid.Views;
 

@@ -2,6 +2,7 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using LibVLCSharp.Forms.Shared;
 using MvvmCross.Forms.Platforms.Android.Views;
 using PanCardView.Droid;
 using Plugin.CurrentActivity;
@@ -34,6 +35,7 @@ public class MainActivity : MvxFormsAppCompatActivity<ViewModel>
 
     private void InitializePackages(Bundle bundle)
     {
+        LibVLCSharpFormsRenderer.Init();
         CrossCurrentActivity.Current.Init(this, bundle);
         Essentials.Platform.Init(this, bundle);
         CardsViewRenderer.Preserve(); 

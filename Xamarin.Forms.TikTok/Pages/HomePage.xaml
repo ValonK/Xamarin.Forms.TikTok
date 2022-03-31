@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <views:MvxContentPage x:TypeArguments="viewModels1:HomeViewModel"
                       xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -17,23 +18,23 @@
         <ResourceDictionary>
 
             <Style TargetType="Label" x:Key="SideLabelStyle">
-                <Setter Property="FontFamily" Value="{StaticResource TikTokFont}"/>
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="11"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="FontFamily" Value="{StaticResource TikTokFont}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="11" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
             </Style>
 
             <Style TargetType="Image" x:Key="SideImageStyle">
-                <Setter Property="HeightRequest" Value="22"/>
-                <Setter Property="WidthRequest" Value="22"/>
+                <Setter Property="HeightRequest" Value="22" />
+                <Setter Property="WidthRequest" Value="22" />
             </Style>
         </ResourceDictionary>
     </views:MvxContentPage.Resources>
 
 
     <Grid RowDefinitions="*, Auto">
-
-        <panCardView:CarouselView 
+        
+        <panCardView:CarouselView
             Grid.Row="0"
             Grid.RowSpan="2"
             IsHorizontalOrientation="False"
@@ -44,8 +45,10 @@
             ItemDisappearingCommand="{Binding ItemDisappearingCommand}"
             OppositePanDirectionDisablingThreshold="1"
             SelectedItem="{Binding CurrentItem}"
-            IsVisible="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}" 
-            ItemsSource="{Binding Items}">
+            IsVisible="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}"
+            ItemsSource="{Binding Items}"
+            IsViewReusingEnabled="False"
+            ShouldShareViewAmongSameItems="False">
             <panCardView:CarouselView.ItemTemplate>
                 <DataTemplate>
                     <controls:HomeViewVideoControl VideoUrl="{Binding VideoUrl}"
@@ -54,15 +57,16 @@
                 </DataTemplate>
             </panCardView:CarouselView.ItemTemplate>
         </panCardView:CarouselView>
-
+        
+        
         <!-- L O A D I N G -->
-        <forms:AnimationView AnimationSource="EmbeddedResource"
+        <forms:AnimationView AnimationSource="AssetOrBundle"
                              Grid.Row="0"
                              Grid.RowSpan="2"
                              IsVisible="{Binding IsBusy}" 
                              IsAnimating="True"
                              x:DataType="viewModels1:HomeViewModel"
-                             Animation="Assets.Animations.loading.json"
+                             Animation="loading.json"
                              VerticalOptions="Center"
                              HeightRequest="80"
                              HorizontalOptions="Center"
@@ -78,7 +82,7 @@
             <Image Source="ic_live.png"
                    HeightRequest="25"
                    WidthRequest="25"
-                   Grid.Column="0"/>
+                   Grid.Column="0" />
 
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center"
@@ -89,24 +93,24 @@
                 <Label Text="Following"
                        TextColor="White"
                        VerticalTextAlignment="Center"
-                       FontAttributes="None"/>
+                       FontAttributes="None" />
 
                 <BoxView BackgroundColor="White"
                          WidthRequest="0.5"
-                         HeightRequest="10"/>
+                         HeightRequest="10" />
 
                 <Label Text="For You"
                        TextColor="White"
                        VerticalTextAlignment="Center"
                        FontFamily="{StaticResource TikTokFont}"
-                       FontAttributes="Bold"/>
+                       FontAttributes="Bold" />
             </StackLayout>
 
 
             <Image Source="ic_search.png"
                    HeightRequest="25"
                    WidthRequest="25"
-                   Grid.Column="2"/>
+                   Grid.Column="2" />
         </Grid>
 
         <!-- S I D E -->
@@ -118,9 +122,9 @@
                      Margin="0,0,10,50"
                      x:DataType="viewModels1:HomeViewModel">
 
-            <StackLayout>        
+            <StackLayout>
                 <Image Source="profileImage.jpeg"
-                       WidthRequest="50"   
+                       WidthRequest="50"
                        HeightRequest="50"
                        HorizontalOptions="Center"
                        VerticalOptions="Center">
@@ -128,7 +132,7 @@
                         <EllipseGeometry
                             Center="25,25"
                             RadiusX="25"
-                            RadiusY="25"/>
+                            RadiusY="25" />
                     </Image.Clip>
                 </Image>
             </StackLayout>
@@ -136,25 +140,25 @@
             <StackLayout Orientation="Vertical"
                          Spacing="6">
                 <Image Source="ic_heart.png"
-                       Style="{StaticResource SideImageStyle}"/>
+                       Style="{StaticResource SideImageStyle}" />
                 <Label Style="{StaticResource SideLabelStyle}"
-                       Text="{Binding CurrentItem.Likes}"/>
+                       Text="{Binding CurrentItem.Likes}" />
             </StackLayout>
 
             <StackLayout Orientation="Vertical"
                          Spacing="6">
                 <Image Source="ic_comments.png"
-                       Style="{StaticResource SideImageStyle}"/>
-                <Label  Style="{StaticResource SideLabelStyle}"
-                        Text="{Binding CurrentItem.Comments}"/>
+                       Style="{StaticResource SideImageStyle}" />
+                <Label Style="{StaticResource SideLabelStyle}"
+                       Text="{Binding CurrentItem.Comments}" />
             </StackLayout>
 
             <StackLayout Orientation="Vertical"
                          Spacing="6">
                 <Image Source="ic_share.png"
-                       Style="{StaticResource SideImageStyle}"/>
-                <Label  Style="{StaticResource SideLabelStyle}"
-                        Text="{Binding CurrentItem.Shares}"/>
+                       Style="{StaticResource SideImageStyle}" />
+                <Label Style="{StaticResource SideLabelStyle}"
+                       Text="{Binding CurrentItem.Shares}" />
             </StackLayout>
 
         </StackLayout>
@@ -172,26 +176,26 @@
                 <Label FontFamily="{StaticResource TikTokFont}"
                        TextColor="White"
                        FontSize="12"
-                       Text="{Binding CurrentItem.Username}"/>
+                       Text="{Binding CurrentItem.Username}" />
 
                 <StackLayout Orientation="Horizontal">
 
                     <Image Source="ic_music.png"
                            HeightRequest="20"
-                           WidthRequest="20"/>
+                           WidthRequest="20" />
 
                     <Label Text="{Binding CurrentItem.Song}"
                            FontSize="12"
                            VerticalTextAlignment="Center"
-                           TextColor="White"/>
+                           TextColor="White" />
                 </StackLayout>
             </StackLayout>
-
-
+            
             <Image Source="ic_artist.png"
                    x:Name="ArtistImage"
-                   Grid.Column="1"/>
+                   Grid.Column="1" />
         </Grid>
+        
 
     </Grid>
 </views:MvxContentPage>

@@ -17,14 +17,14 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels._Base
 		private bool _isBusy;
 		private bool _isRefreshing;
 		private string _title;
-		
+
 		public bool IsBusy
 		{
 			get => _isBusy;
 			set
 			{
 				_isBusy = value;
-				SetProperty(ref _isRefreshing, value);
+				SetProperty(ref _isBusy, value);
 			}
 		}
 

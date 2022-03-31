@@ -13,7 +13,7 @@ namespace Xamarin.Forms.TikTok.Pages;
 public partial class HomePage
 {
     private bool _isRotating;
-
+    
     public HomePage()
     {
         InitializeComponent();
@@ -25,8 +25,9 @@ public partial class HomePage
         base.OnAppearing();
         CarouselView.UserInteracted += CarouselView_UserInteracted;
         await RotateElement(ArtistImage);
-    }
 
+    }
+    
     protected override void OnDisappearing()
     {
         base.OnDisappearing();

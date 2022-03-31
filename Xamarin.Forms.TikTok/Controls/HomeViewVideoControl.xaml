@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Xamarin.Forms.TikTok.Controls.HomeViewVideoControl">
-    <Grid x:Name="Container"/>
-</ContentView>
+             xmlns:shared="clr-namespace:LibVLCSharp.Forms.Shared;assembly=LibVLCSharp.Forms"
+             x:Class="Xamarin.Forms.TikTok.Controls.HomeViewVideoControl"
+             x:Name="Root">
+    <Grid>
+        <shared:VideoView  x:Name="VideoView"
+          MediaPlayer="{Binding Source={x:Reference Root}, Path=MediaPlayer}"/>
+    </Grid>
+</ContentView>  

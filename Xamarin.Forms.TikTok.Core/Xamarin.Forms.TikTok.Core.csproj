@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="CardsView" Version="2.8.0" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.1.0" />
+    <PackageReference Include="LibVLCSharp.Forms" Version="3.6.6" />
     <PackageReference Include="MvvmCross.Forms" Version="8.0.2" />
   </ItemGroup>
 
