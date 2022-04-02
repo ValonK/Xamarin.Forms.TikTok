@@ -11,7 +11,8 @@
                       androidSpecific:TabbedPage.ToolbarPlacement="Bottom"
                       iOsSpecific:Page.UseSafeArea="False"
                       androidSpecific:TabbedPage.IsSmoothScrollEnabled="false"
-                      BarBackgroundColor="Black">
+                      BarBackgroundColor="Black"
+                      BarTextColor="White">
     <TabbedPage.Behaviors>
         <behaviors:TabbedPageBehavior/>
     </TabbedPage.Behaviors>

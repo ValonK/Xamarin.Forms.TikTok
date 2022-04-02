@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using LibVLCSharp.Shared;
 using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
@@ -9,7 +10,11 @@ namespace Xamarin.Forms.TikTok.Controls
     public partial class HomeViewVideoControl
     {
         private readonly DisplayInfo _displayInfo;
-        
+        private MediaPlayer _mediaPlayer;
+
+        public event EventHandler MediaStopped;
+        public event EventHandler MediaStarted; 
+
         public HomeViewVideoControl()
         {
             InitializeComponent();
@@ -57,9 +62,7 @@ namespace Xamarin.Forms.TikTok.Controls
         public static readonly BindableProperty VideoUrlProperty =
             BindableProperty.Create(nameof(VideoUrl), typeof(string),
                 typeof(HomeViewVideoControl));
-
-        private MediaPlayer _mediaPlayer;
-
+        
         public string VideoUrl
         {
             get => (string)GetValue(VideoUrlProperty);
@@ -78,11 +81,27 @@ namespace Xamarin.Forms.TikTok.Controls
             var mediaSource = PrepareMedia(VideoUrl);
             MediaPlayer = new MediaPlayer(new Media(App.LibVLC, mediaSource));
             MediaPlayer.AspectRatio = $"{_displayInfo.Height}:{_displayInfo.Width}";
+            MediaPlayer.PositionChanged += MediaPlayerOnPositionChanged;
+            MediaPlayer.Stopped += MediaPlayerOnStopped;
+            MediaStarted?.Invoke(this, EventArgs.Empty);
             MediaPlayer.Play();
         }
 
+        private void MediaPlayerOnStopped(object sender, EventArgs e)
+        {
+            PositionSlider.Value = 0;
+        }
+
+        private void MediaPlayerOnPositionChanged(object sender, MediaPlayerPositionChangedEventArgs e)
+        {
+            PositionSlider.Value = e.Position;
+        }
+        
         private void Stop()
         {
+            MediaPlayer.PositionChanged -= MediaPlayerOnPositionChanged;
+            MediaPlayer.Stopped -= MediaPlayerOnStopped;
+            MediaStopped?.Invoke(this, EventArgs.Empty);
             MediaPlayer.Stop();
             MediaPlayer.Dispose();
         }
