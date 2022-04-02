@@ -48,11 +48,13 @@
                 <controls:DiscoverItemControl Title="Savage"
                                               Subtitle="Trending hashtag"
                                               Items="{Binding Items}"
+                                              x:DataType="viewModels:DiscoverViewModel"
                                               Grid.Row="1"/>
-
+                
                 <controls:DiscoverItemControl Title="In 2022"
                                               Subtitle="Trending effect"
                                               Items="{Binding Items}"
+                                              x:DataType="viewModels:DiscoverViewModel"
                                               Grid.Row="2"/>
             </Grid>
         </ScrollView>

@@ -8,9 +8,12 @@ namespace Xamarin.Forms.TikTok.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomeViewVideoControl
     {
+        private readonly DisplayInfo _displayInfo;
+        
         public HomeViewVideoControl()
         {
             InitializeComponent();
+            _displayInfo = new DisplayInfo();
         }
 
         public MediaPlayer MediaPlayer
@@ -72,10 +75,9 @@ namespace Xamarin.Forms.TikTok.Controls
 
         private void Play()
         {
-            var displayInfo = new DisplayInfo();
             var mediaSource = PrepareMedia(VideoUrl);
             MediaPlayer = new MediaPlayer(new Media(App.LibVLC, mediaSource));
-            MediaPlayer.AspectRatio = $"{displayInfo.Height}:{displayInfo.Width}";
+            MediaPlayer.AspectRatio = $"{_displayInfo.Height}:{_displayInfo.Width}";
             MediaPlayer.Play();
         }
 
@@ -84,6 +86,5 @@ namespace Xamarin.Forms.TikTok.Controls
             MediaPlayer.Stop();
             MediaPlayer.Dispose();
         }
-
     }
 }

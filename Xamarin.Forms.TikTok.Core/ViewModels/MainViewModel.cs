@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 using Xamarin.Forms.TikTok.Core.ViewModels._Base;
 
 namespace Xamarin.Forms.TikTok.Core.ViewModels
@@ -7,9 +9,9 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
     public class MainViewModel : BaseViewModel
     {
         private readonly IMvxNavigationService _mvxNavigationService;
-
-        private bool _tabsLoaded;
-
+        private readonly IMvxViewModel _previousViewModel;
+        
+        private bool _tabsInitialized;
         
         public MainViewModel(IMvxNavigationService mvxNavigationService)
         {
@@ -20,18 +22,23 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
         {
             base.ViewAppearing();
 
-            if (_tabsLoaded != false) return;
+            if (_tabsInitialized) return;
+            
             await SetupTabsAsync();
-            _tabsLoaded = true;
+            _tabsInitialized = true;
         }
         
-        private async Task SetupTabsAsync()
+        private Task SetupTabsAsync()
         {
-            await _mvxNavigationService.Navigate(typeof(HomeViewModel));
-            await _mvxNavigationService.Navigate(typeof(DiscoverViewModel));
-            await _mvxNavigationService.Navigate(typeof(RecordViewModel));
-            await _mvxNavigationService.Navigate(typeof(InboxViewModel));
-            await _mvxNavigationService.Navigate(typeof(ProfileViewModel));
+            var tabTasks = new List<Task>
+            {
+                _mvxNavigationService.Navigate<HomeViewModel>(),
+                _mvxNavigationService.Navigate<DiscoverViewModel>(),
+                _mvxNavigationService.Navigate<RecordViewModel>(),
+                _mvxNavigationService.Navigate<InboxViewModel>(),
+                _mvxNavigationService.Navigate<ProfileViewModel>(),
+            };
+            return Task.WhenAll(tabTasks);
         }
     }
 }

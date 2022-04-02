@@ -6,8 +6,13 @@
                       xmlns:views1="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:viewModels="clr-namespace:Xamarin.Forms.TikTok.Core.ViewModels;assembly=Xamarin.Forms.TikTok.Core"
                       xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                      xmlns:behaviors="clr-namespace:Xamarin.Forms.TikTok.Behaviors;assembly=Xamarin.Forms.TikTok"
                       x:Class="Xamarin.Forms.TikTok.Pages.MainPage"
                       androidSpecific:TabbedPage.ToolbarPlacement="Bottom"
                       iOsSpecific:Page.UseSafeArea="False"
                       androidSpecific:TabbedPage.IsSmoothScrollEnabled="false"
-                      BarBackgroundColor="Black"/>
+                      BarBackgroundColor="Black">
+    <TabbedPage.Behaviors>
+        <behaviors:TabbedPageBehavior/>
+    </TabbedPage.Behaviors>
+</views1:MvxTabbedPage>

@@ -7,8 +7,8 @@ using Xamarin.Forms.Xaml;
 namespace Xamarin.Forms.TikTok.Pages;
 
 [XamlCompilation(XamlCompilationOptions.Compile)]
-[MvxTabbedPagePresentation(TabbedPosition.Root, NoHistory = true, ViewModelType = typeof(MainViewModel))]
-public partial class MainPage
+[MvxTabbedPagePresentation(TabbedPosition.Root, ViewModelType = typeof(MainViewModel))]
+public partial class MainPage 
 {
     public static MainPage Current { get; private set; }
 
@@ -18,7 +18,7 @@ public partial class MainPage
         NavigationPage.SetHasNavigationBar(this, false);
         Current = this;
     }
-
+    
     public static void DisableSwipe()
     {
         Current.On<Android>().DisableSwipePaging();

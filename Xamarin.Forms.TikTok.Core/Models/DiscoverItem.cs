@@ -4,7 +4,6 @@
     {
         private string _name;
         private string _image;
-        private bool _isAnimating;
 
         public string Name
         {
@@ -16,12 +15,6 @@
         {
             get => _image;
             set => SetProperty(ref _image, value);
-        }
-
-        public bool IsAnimating
-        {
-            get => _isAnimating;
-            set => SetProperty(ref _isAnimating, value);
         }
     }
 }

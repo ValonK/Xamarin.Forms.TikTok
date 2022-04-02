@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.ViewModels;
+using Xamarin.Forms.TikTok.Core.Extensions;
+using Xamarin.Forms.TikTok.Core.Helpers;
 
 namespace Xamarin.Forms.TikTok.Core.ViewModels._Base
 {
@@ -46,6 +48,32 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels._Base
 				_title = value;
 				SetProperty(ref _title, value);
 			}
+		}
+		
+		/// <summary>
+		/// Workaround to trigger ViewAppearing & ViewDissapearing
+		/// with MvvmCross TabbedPages
+		/// </summary>
+		/// <param name="viewModel"></param>
+		public static void OnTabChanged(IMvxViewModel viewModel)
+		{
+			var viewModels = Utils.GetActiveViewModels();
+			if (viewModels == null || viewModels.Count == 0)
+			{
+				return;
+			}
+            
+			var currentViewModelIndex = viewModels.FindIndex(x => x.GetType() == viewModel.GetType());
+			if (currentViewModelIndex <= 0)
+			{
+				return;
+			}
+            
+			var nextViewModel = viewModels[currentViewModelIndex];
+			var previousViewModel = viewModels[currentViewModelIndex - 1];
+            
+			previousViewModel.ViewDisappearing();
+			nextViewModel.ViewAppearing();
 		}
 	}
 }

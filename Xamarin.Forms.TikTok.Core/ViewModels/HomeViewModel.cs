@@ -23,7 +23,6 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
             ItemDisappearingCommand = new MvxCommand<ItemDisappearingEventArgs>(OnItemDisapearing);
         }
 
-
         public ObservableCollection<TikTokItem> Items
         {
             get => _items;
@@ -42,12 +41,17 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
         
         public override async void ViewAppearing()
         {
-            IsBusy = true;
-
-            CurrentItem = Items.First();
-
-            await Task.Delay(1200);
-            IsBusy = false;
+            if (CurrentItem == null)
+            {
+                IsBusy = true;
+                CurrentItem = Items.First();
+                await Task.Delay(1000);
+                IsBusy = false;    
+            }
+            else
+            {
+                CurrentItem.IsPlaying = true;
+            }
         }
 
         public override Task Initialize()
@@ -58,12 +62,17 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
 
         public override void ViewDisappearing()
         {
-            Items.Clear();
+            if (Items.Count == 0) return;
+            
+            foreach (var tikTokItem in Items)
+            {
+                if (tikTokItem.IsPlaying) { tikTokItem.IsPlaying = false; }
+            } 
         }
 
         private static void OnItemDisapearing(ItemDisappearingEventArgs eventArgs)
         {
-            if (eventArgs.Item is TikTokItem item)
+            if (eventArgs.Item is TikTokItem {IsPlaying: true} item)
             {
                 item.IsPlaying = false;
             }
@@ -71,7 +80,7 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
 
         private static void OnItemAppearing(ItemAppearingEventArgs eventArgs)
         {
-            if (eventArgs.Item is TikTokItem item)
+            if (eventArgs.Item is TikTokItem { IsPlaying: false } item)
             {
                 item.IsPlaying = true;
             }

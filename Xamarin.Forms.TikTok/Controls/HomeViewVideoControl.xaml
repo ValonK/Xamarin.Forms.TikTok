@@ -5,7 +5,6 @@
              x:Class="Xamarin.Forms.TikTok.Controls.HomeViewVideoControl"
              x:Name="Root">
     <Grid>
-        <shared:VideoView  x:Name="VideoView"
-          MediaPlayer="{Binding Source={x:Reference Root}, Path=MediaPlayer}"/>
+        <shared:VideoView MediaPlayer="{Binding Source={x:Reference Root}, Path=MediaPlayer}"/>
     </Grid>
 </ContentView>  
