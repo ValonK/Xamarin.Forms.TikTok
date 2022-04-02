@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MvvmCross.Forms.Presenters.Attributes;
 using PanCardView;
 using PanCardView.Enums;
@@ -19,6 +18,7 @@ public partial class HomePage
     {
         InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
+        RotateElement(ArtistImage);
     }
 
     protected override async void OnAppearing()
@@ -35,11 +35,8 @@ public partial class HomePage
 
     private async Task RotateElement(VisualElement element)
     {
-        while (true)
+        while (!_isRotating)
         {
-            if (!_isRotating)
-                break;
-            
             await element.RotateTo(360, 1900, Easing.Linear);
             await element.RotateTo(0, 0);
         }
@@ -56,16 +53,5 @@ public partial class HomePage
                 MainPage.EnableSwipe();
                 break;
         }
-    }
-
-    private async void HomeViewVideoControl_OnMediaStarted(object sender, EventArgs e)
-    {
-        _isRotating = true;
-        await RotateElement(ArtistImage);
-    }
-
-    private void HomeViewVideoControl_OnMediaStopped(object sender, EventArgs e)
-    {
-        _isRotating = false;
     }
 }

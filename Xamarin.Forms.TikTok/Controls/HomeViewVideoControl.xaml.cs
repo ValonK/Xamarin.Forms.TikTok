@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 using LibVLCSharp.Shared;
 using Xamarin.Essentials;
@@ -12,25 +13,12 @@ namespace Xamarin.Forms.TikTok.Controls
         private readonly DisplayInfo _displayInfo;
         private MediaPlayer _mediaPlayer;
 
-        public event EventHandler MediaStopped;
-        public event EventHandler MediaStarted; 
-
         public HomeViewVideoControl()
         {
             InitializeComponent();
             _displayInfo = new DisplayInfo();
         }
-
-        public MediaPlayer MediaPlayer
-        {
-            get => _mediaPlayer;
-            set
-            {
-                _mediaPlayer = value;
-                OnPropertyChanged(nameof(MediaPlayer));
-            }
-        }
-
+        
         public static readonly BindableProperty IsPlayingProperty =
             BindableProperty.Create(nameof(IsPlaying), typeof(bool),
                 typeof(HomeViewVideoControl), false, propertyChanged: OnIsPlayingChanged);
@@ -42,7 +30,9 @@ namespace Xamarin.Forms.TikTok.Controls
                 return;
             }
 
-            if (home.IsPlaying)
+            var isPlaying = (bool)newvalue;
+
+            if (isPlaying)
             {
                home.Play();
             }
@@ -57,8 +47,7 @@ namespace Xamarin.Forms.TikTok.Controls
             get => (bool)GetValue(IsPlayingProperty);
             set => SetValue(IsPlayingProperty, value);
         }
-
-
+        
         public static readonly BindableProperty VideoUrlProperty =
             BindableProperty.Create(nameof(VideoUrl), typeof(string),
                 typeof(HomeViewVideoControl));
@@ -78,13 +67,18 @@ namespace Xamarin.Forms.TikTok.Controls
 
         private void Play()
         {
-            var mediaSource = PrepareMedia(VideoUrl);
-            MediaPlayer = new MediaPlayer(new Media(App.LibVLC, mediaSource));
-            MediaPlayer.AspectRatio = $"{_displayInfo.Height}:{_displayInfo.Width}";
-            MediaPlayer.PositionChanged += MediaPlayerOnPositionChanged;
-            MediaPlayer.Stopped += MediaPlayerOnStopped;
-            MediaStarted?.Invoke(this, EventArgs.Empty);
-            MediaPlayer.Play();
+            try
+            { 
+                var mediaSource = PrepareMedia(VideoUrl);
+                _mediaPlayer = new MediaPlayer(new Media(App.LibVLC, mediaSource));
+                VideoView.MediaPlayer = _mediaPlayer;
+
+                _mediaPlayer.AspectRatio = $"{_displayInfo.Height}:{_displayInfo.Width}";
+                _mediaPlayer.PositionChanged += MediaPlayerOnPositionChanged;
+                _mediaPlayer.Stopped += MediaPlayerOnStopped;
+                _mediaPlayer.Play();
+            }
+            catch (Exception e) { Debug.Write(e.ToString()); }
         }
 
         private void MediaPlayerOnStopped(object sender, EventArgs e)
@@ -99,11 +93,10 @@ namespace Xamarin.Forms.TikTok.Controls
         
         private void Stop()
         {
-            MediaPlayer.PositionChanged -= MediaPlayerOnPositionChanged;
-            MediaPlayer.Stopped -= MediaPlayerOnStopped;
-            MediaStopped?.Invoke(this, EventArgs.Empty);
-            MediaPlayer.Stop();
-            MediaPlayer.Dispose();
+            _mediaPlayer.PositionChanged -= MediaPlayerOnPositionChanged;
+            _mediaPlayer.Stopped -= MediaPlayerOnStopped;
+            _mediaPlayer.Stop();
+            _mediaPlayer.Dispose();
         }
     }
 }

@@ -53,9 +53,7 @@
                 <DataTemplate>
                     <controls:HomeViewVideoControl VideoUrl="{Binding VideoUrl}"
                                                    IsPlaying="{Binding IsPlaying}"
-                                                   x:DataType="models:TikTokItem"
-                                                   MediaStarted="HomeViewVideoControl_OnMediaStarted"
-                                                   MediaStopped="HomeViewVideoControl_OnMediaStopped"/>
+                                                   x:DataType="models:TikTokItem"/>
                 </DataTemplate>
             </panCardView:CarouselView.ItemTemplate>
         </panCardView:CarouselView>
@@ -168,7 +166,7 @@
         <!-- B O T T O M -->
         <Grid ColumnDefinitions="*, Auto"
               VerticalOptions="End"
-              Margin="20,0,10,25"
+              Margin="20,0,10,28"
               Grid.Row="1">
 
             <StackLayout Orientation="Vertical"
@@ -197,7 +195,5 @@
                    x:Name="ArtistImage"
                    Grid.Column="1" />
         </Grid>
-        
-
     </Grid>
 </views:MvxContentPage>

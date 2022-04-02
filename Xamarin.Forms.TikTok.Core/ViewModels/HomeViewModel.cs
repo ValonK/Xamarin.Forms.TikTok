@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MvvmCross.Commands;
 using PanCardView.EventArgs;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.TikTok.Core.Models;
 using Xamarin.Forms.TikTok.Core.Services.Media;
 using Xamarin.Forms.TikTok.Core.ViewModels._Base;
@@ -78,10 +79,18 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
             }
         }
 
-        private static void OnItemAppearing(ItemAppearingEventArgs eventArgs)
+        private void OnItemAppearing(ItemAppearingEventArgs eventArgs)
         {
             if (eventArgs.Item is TikTokItem { IsPlaying: false } item)
             {
+                Items.ForEach(x =>
+                {
+                    if (x.VideoUrl != item.VideoUrl)
+                    {
+                        x.IsPlaying = false;
+                    }
+                }); 
+                
                 item.IsPlaying = true;
             }
         }
