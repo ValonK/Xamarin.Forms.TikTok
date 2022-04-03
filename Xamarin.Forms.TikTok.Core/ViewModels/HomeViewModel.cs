@@ -40,12 +40,11 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
 
         public IMvxCommand<ItemDisappearingEventArgs> ItemDisappearingCommand { get; }
         
-        public override async void ViewAppearing()
+        public override void ViewAppearing()
         {
             if (Items == null)
             {
                 IsBusy = true;
-                await Task.Delay(3000);
                 Items = new ObservableCollection<TikTokItem>(_mediaService.GetMediaItems());
                 CurrentItem = Items.First();
                 IsBusy = false;
