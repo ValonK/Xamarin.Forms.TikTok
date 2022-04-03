@@ -49,8 +49,7 @@
                     <DataTemplate>
                         <Image Source="{Binding Image}"
                                WidthRequest="110"
-                               HorizontalOptions="Center"
-                               IsAnimationPlaying="{Binding IsAnimating}"/>
+                               HorizontalOptions="Center"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

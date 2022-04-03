@@ -1,26 +1,16 @@
-﻿using Xamarin.Forms.TikTok.Views;
+﻿using LibVLCSharp.Shared;
 
-namespace Xamarin.Forms.TikTok
+namespace Xamarin.Forms.TikTok;
+
+public partial class App
 {
-    public partial class App : Application
+    public static LibVLC LibVLC;
+ 
+    public App()
     {
-        public App()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            MainPage = new MainView();
-        }
-
-        protected override void OnStart()
-        {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
-        }
+        LibVLCSharp.Shared.Core.Initialize();
+        LibVLC = new LibVLC(true);
     }
 }

@@ -3,6 +3,7 @@ using Android.Graphics;
 using Android.Widget;
 using Google.Android.Material.BottomNavigation;
 using Google.Android.Material.Internal;
+using MvvmCross.Forms.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Platform.Android.AppCompat;
@@ -10,7 +11,7 @@ using Xamarin.Forms.TikTok.Droid.Renderers;
 using Xamarin.Forms.TikTok.Views;
 using BottomNavigationView = Google.Android.Material.BottomNavigation.BottomNavigationView;
 
-[assembly: ExportRenderer(typeof(TabbedPage), typeof(CustomTabbedPageRenderer))]
+[assembly: ExportRenderer(typeof(MvxTabbedPage), typeof(CustomTabbedPageRenderer))]
 namespace Xamarin.Forms.TikTok.Droid.Renderers
 {
     public class CustomTabbedPageRenderer : TabbedPageRenderer

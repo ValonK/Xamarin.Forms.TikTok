@@ -1,6 +1,27 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Xamarin.Forms.TikTok.Controls.HomeViewVideoControl">
-    <Grid x:Name="Container"/>
+             xmlns:shared="clr-namespace:LibVLCSharp.Forms.Shared;assembly=LibVLCSharp.Forms"
+             x:Class="Xamarin.Forms.TikTok.Controls.HomeViewVideoControl"
+             x:Name="Root">
+    <Grid>
+        <shared:VideoView x:Name="VideoView" />
+        
+        <Grid BackgroundColor="Black"
+              Margin="0,0,0,-10"
+              IsClippedToBounds="False"
+              VerticalOptions="End">
+              <Grid HeightRequest="15"/>
+        </Grid>
+
+        <Slider x:Name="PositionSlider"
+                ThumbColor="White"
+                Maximum="1.0"
+                VerticalOptions="End"
+                Margin="-14, 0, -14, -2"
+                InputTransparent="True"
+                MaximumTrackColor="Gray"
+                MinimumTrackColor="White"/>
+    </Grid>
 </ContentView>
