@@ -8,7 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Platform.Android.AppCompat;
 using Xamarin.Forms.TikTok.Droid.Renderers;
-using Xamarin.Forms.TikTok.Views;
+using Xamarin.Forms.TikTok.Pages;
 using BottomNavigationView = Google.Android.Material.BottomNavigation.BottomNavigationView;
 
 [assembly: ExportRenderer(typeof(MvxTabbedPage), typeof(CustomTabbedPageRenderer))]
@@ -31,15 +31,8 @@ namespace Xamarin.Forms.TikTok.Droid.Renderers
 
             _bottomNavigationView = (GetChildAt(0) as global::Android.Widget.RelativeLayout)?.GetChildAt(1) as BottomNavigationView;
             ChangeFont(Color.White);
-
-            MessagingCenter.Subscribe<MainView, Color>(this, "TabColor", OnTabColorChanged);
         }
-
-        private void OnTabColorChanged(MainView arg1, Color color)
-        {
-            ChangeFont(color);
-        }
-
+        
         private void ChangeFont(Color color)
         {
             if (Context != null)
