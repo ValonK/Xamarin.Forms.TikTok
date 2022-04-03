@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using LibVLCSharp.Shared;
 using Xamarin.Essentials;
+using Xamarin.Forms.TikTok.Helpers;
 using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.TikTok.Controls
@@ -33,11 +34,17 @@ namespace Xamarin.Forms.TikTok.Controls
             var isPlaying = (bool)newvalue;
             if (isPlaying)
             {
-               home.Play();
+                if (!Utils.IsPlaying)
+                {
+                    home.Play();
+                }
             }
             else
             {
-                home.Stop();
+                if (Utils.IsPlaying)
+                {
+                    home.Stop();
+                }
             }
         }
 
@@ -77,6 +84,7 @@ namespace Xamarin.Forms.TikTok.Controls
                 _mediaPlayer.Stopped += MediaPlayerOnStopped;
                 PositionSlider.IsVisible = true;
                 _mediaPlayer.Play();
+                Utils.IsPlaying = true;
             }
             catch (Exception e) { Debug.Write(e.ToString()); }
         }
@@ -98,6 +106,7 @@ namespace Xamarin.Forms.TikTok.Controls
             _mediaPlayer.Stopped -= MediaPlayerOnStopped;
             _mediaPlayer.Stop();
             _mediaPlayer.Dispose();
+            Utils.IsPlaying = false;
         }
     }
 }

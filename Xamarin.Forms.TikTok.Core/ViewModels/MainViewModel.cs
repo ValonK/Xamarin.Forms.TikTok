@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using MvvmCross.Navigation;
-using MvvmCross.ViewModels;
 using Xamarin.Forms.TikTok.Core.ViewModels._Base;
 
 namespace Xamarin.Forms.TikTok.Core.ViewModels
@@ -9,8 +8,6 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
     public class MainViewModel : BaseViewModel
     {
         private readonly IMvxNavigationService _mvxNavigationService;
-        private readonly IMvxViewModel _previousViewModel;
-        
         private bool _tabsInitialized;
         
         public MainViewModel(IMvxNavigationService mvxNavigationService)

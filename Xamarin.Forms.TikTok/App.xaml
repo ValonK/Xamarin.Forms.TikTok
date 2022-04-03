@@ -7,7 +7,7 @@
 
 
         <x:String x:Key="TikTokFont">TikTokFont</x:String>
-
+        <x:String x:Key="MaterialFontIcon">MaterialIconFont</x:String>
         <converters:InvertedBoolConverter x:Key="InvertedBoolConverter"/>
     </Application.Resources>
 </Application>

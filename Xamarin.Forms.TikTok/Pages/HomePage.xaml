@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
 <views:MvxContentPage x:TypeArguments="viewModels1:HomeViewModel"
                       xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -10,6 +9,7 @@
                       xmlns:viewModels1="clr-namespace:Xamarin.Forms.TikTok.Core.ViewModels;assembly=Xamarin.Forms.TikTok.Core"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:models="clr-namespace:Xamarin.Forms.TikTok.Core.Models;assembly=Xamarin.Forms.TikTok.Core"
+                      xmlns:helpers="clr-namespace:Xamarin.Forms.TikTok.Helpers;assembly=Xamarin.Forms.TikTok"
                       BackgroundColor="Black"
                       IconImageSource="ic_home.png"
                       Title="Home">
@@ -124,20 +124,47 @@
                      Margin="0,0,10,50"
                      x:DataType="viewModels1:HomeViewModel">
 
-            <StackLayout>
-                <Image Source="profileImage.jpeg"
-                       WidthRequest="50"
-                       HeightRequest="50"
+            <Grid HorizontalOptions="End"
+                  WidthRequest="60"
+                  HeightRequest="60"> 
+
+                <Ellipse                  
+                    Stroke="White"
+                    WidthRequest="59"
+                    HeightRequest="59"
+                    Fill="White"/> 
+                    <Image Source="profileImage.jpeg"
+                           WidthRequest="54"
+                           HeightRequest="54"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+                        <Image.Clip>
+                            <EllipseGeometry
+                                Center="27,27"
+                                RadiusX="27"
+                                RadiusY="27"  />
+                        </Image.Clip>
+                    </Image>
+                
+                <Frame BackgroundColor="White"
+                       HasShadow="False"
+                       HeightRequest="20"
+                       WidthRequest="20"
+                       Padding="0"
+                       Margin="0,0,0,-8"
+                       CornerRadius="10"
                        HorizontalOptions="Center"
-                       VerticalOptions="Center">
-                    <Image.Clip>
-                        <EllipseGeometry
-                            Center="25,25"
-                            RadiusX="25"
-                            RadiusY="25" />
-                    </Image.Clip>
-                </Image>
-            </StackLayout>
+                       VerticalOptions="End">
+                    <Label FontFamily="{StaticResource MaterialFontIcon}"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="20"
+                           Text="{x:Static helpers:IconFont.PlusCircle}"
+                           TextColor="#ff2b52"/>
+                </Frame>
+      
+            </Grid>
+          
 
             <StackLayout Orientation="Vertical"
                          Spacing="6">
@@ -197,6 +224,5 @@
                    x:Name="ArtistImage"
                    Grid.Column="1" />
         </Grid>
-       
     </Grid>
 </views:MvxContentPage>

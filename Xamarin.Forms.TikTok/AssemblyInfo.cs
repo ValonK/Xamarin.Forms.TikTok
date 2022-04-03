@@ -3,3 +3,4 @@ using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)] 
 [assembly: ExportFont("tiktokfont.ttf", Alias = "TikTokFont")]
+[assembly: ExportFont("materialdesignicons-webfont.ttf", Alias = "MaterialIconFont")]
