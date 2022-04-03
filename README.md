@@ -9,6 +9,7 @@ Android  only for now.
 <img src="https://github.com/ValonK/Xamarin.Forms.TikTok/blob/main/assets/1.jpg?raw=true" width="200"> <img src="https://github.com/ValonK/Xamarin.Forms.TikTok/blob/main/assets/2.jpg?raw=true" width="200">
 
 #### Packages:
+ - https://github.com/videolan/libvlcsharp
  - https://github.com/AndreiMisiukevich/CardView
  - https://github.com/Baseflow/LottieXamarin
  - https://github.com/xamarin/XamarinCommunityToolkit
