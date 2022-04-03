@@ -92,14 +92,27 @@
                          Margin="0,0,0,0"
                          Grid.Column="1">
 
-                <Label Text="Following"
-                       TextColor="White"
-                       VerticalTextAlignment="Center"
-                       FontAttributes="None" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Following"
+                           TextColor="White"
+                           VerticalTextAlignment="Center"
+                           FontAttributes="None" />
+                    
+                    <Frame BackgroundColor="#ff2b52"
+                           HasShadow="False"
+                           HeightRequest="8"
+                           WidthRequest="8"
+                           Padding="0"
+                           Margin="-5,-13,0,0"
+                           CornerRadius="4"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </StackLayout>
+ 
 
                 <BoxView BackgroundColor="White"
                          WidthRequest="0.5"
-                         HeightRequest="10" />
+                         HeightRequest="5" />
 
                 <Label Text="For You"
                        TextColor="White"
