@@ -19,6 +19,8 @@
     <Compile Remove="Assets\Videos - Copy\**" />
     <EmbeddedResource Remove="Assets\Videos - Copy\**" />
     <None Remove="Assets\Videos - Copy\**" />
+    <None Remove="Assets\Fonts\materialdesignicons-webfont.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\materialdesignicons-webfont.ttf" />
   </ItemGroup>
 
   <ItemGroup>
