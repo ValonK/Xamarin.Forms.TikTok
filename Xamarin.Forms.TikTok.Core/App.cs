@@ -1,6 +1,8 @@
 ﻿using MvvmCross;
 using MvvmCross.IoC;
 using MvvmCross.ViewModels;
+using Xamarin.Essentials.Implementation;
+using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms.TikTok.Core.Services.Media;
 using Xamarin.Forms.TikTok.Core.ViewModels;
 
@@ -15,6 +17,7 @@ public class App : MvxApplication
             .AsInterfaces()
             .RegisterAsLazySingleton();
         
+        Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDeviceDisplay, DeviceDisplayImplementation>();
         Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IMediaService, MediaService>();
         
         RegisterAppStart<InitializationViewModel>();

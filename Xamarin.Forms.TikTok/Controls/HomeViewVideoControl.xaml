@@ -6,7 +6,7 @@
              x:Class="Xamarin.Forms.TikTok.Controls.HomeViewVideoControl"
              x:Name="Root">
     <Grid>
-        <shared:VideoView x:Name="VideoView" />
+        <shared:VideoView MediaPlayer="{Binding Source={x:Reference Root}, Path=MediaPlayer}"/>
         
         <Grid BackgroundColor="Black"
               Margin="0,0,0,-10"
@@ -15,9 +15,10 @@
               <Grid HeightRequest="15"/>
         </Grid>
 
-        <Slider x:Name="PositionSlider"
-                ThumbColor="White"
+        <Slider ThumbColor="White"
                 Maximum="1.0"
+                Value="{Binding Source={x:Reference Root}, Path=Position}"
+                IsVisible="{Binding Source={x:Reference Root}, Path=PositionVisible}"
                 VerticalOptions="End"
                 Margin="-14, 0, -14, -2"
                 InputTransparent="True"

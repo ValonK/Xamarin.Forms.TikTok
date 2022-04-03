@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
+using LibVLCSharp.Shared;
 using Xamarin.Forms.TikTok.Core.Models;
 
 namespace Xamarin.Forms.TikTok.Core.Services.Media;
@@ -77,4 +79,11 @@ public class MediaService : IMediaService
             }
         };
     }
+    
+    public StreamMediaInput PrepareMedia(string media)
+    {
+        var assembly = typeof(App).GetTypeInfo().Assembly;
+        var stream = assembly.GetManifestResourceStream($"Xamarin.Forms.TikTok.Assets.Media.{media}");
+        return new StreamMediaInput(stream);
+    } 
 }

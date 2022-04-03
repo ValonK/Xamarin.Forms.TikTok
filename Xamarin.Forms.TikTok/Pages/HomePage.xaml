@@ -51,8 +51,9 @@
             ShouldShareViewAmongSameItems="False">
             <panCardView:CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <controls:HomeViewVideoControl VideoUrl="{Binding VideoUrl}"
-                                                   IsPlaying="{Binding IsPlaying}"
+                    <controls:HomeViewVideoControl MediaPlayer="{Binding Source={RelativeSource AncestorType={x:Type viewModels1:HomeViewModel}}, Path=MediaPlayer}"
+                                                   Position="{Binding Source={RelativeSource AncestorType={x:Type viewModels1:HomeViewModel}}, Path=Position}"
+                                                   PositionVisible="{Binding Source={RelativeSource AncestorType={x:Type viewModels1:HomeViewModel}}, Path=PositionVisible}"
                                                    x:DataType="models:TikTokItem"/>
                 </DataTemplate>
             </panCardView:CarouselView.ItemTemplate>

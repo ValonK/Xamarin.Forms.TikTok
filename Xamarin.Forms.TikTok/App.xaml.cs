@@ -11,6 +11,5 @@ public partial class App
         InitializeComponent();
 
         LibVLCSharp.Shared.Core.Initialize();
-        LibVLC = new LibVLC(true);
     }
 }
