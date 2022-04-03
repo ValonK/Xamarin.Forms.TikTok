@@ -31,7 +31,6 @@ namespace Xamarin.Forms.TikTok.Controls
             }
 
             var isPlaying = (bool)newvalue;
-
             if (isPlaying)
             {
                home.Play();
@@ -76,6 +75,7 @@ namespace Xamarin.Forms.TikTok.Controls
                 _mediaPlayer.AspectRatio = $"{_displayInfo.Height}:{_displayInfo.Width}";
                 _mediaPlayer.PositionChanged += MediaPlayerOnPositionChanged;
                 _mediaPlayer.Stopped += MediaPlayerOnStopped;
+                PositionSlider.IsVisible = true;
                 _mediaPlayer.Play();
             }
             catch (Exception e) { Debug.Write(e.ToString()); }
@@ -93,6 +93,7 @@ namespace Xamarin.Forms.TikTok.Controls
         
         private void Stop()
         {
+            PositionSlider.IsVisible = false;
             _mediaPlayer.PositionChanged -= MediaPlayerOnPositionChanged;
             _mediaPlayer.Stopped -= MediaPlayerOnStopped;
             _mediaPlayer.Stop();
