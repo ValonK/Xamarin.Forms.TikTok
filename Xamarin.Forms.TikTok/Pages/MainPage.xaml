@@ -10,6 +10,8 @@
                       x:Class="Xamarin.Forms.TikTok.Pages.MainPage"
                       androidSpecific:TabbedPage.ToolbarPlacement="Bottom"
                       iOsSpecific:Page.UseSafeArea="False"
+                      androidSpecific:TabbedPage.BarItemColor="White"
+                      androidSpecific:TabbedPage.BarSelectedItemColor="White"
                       androidSpecific:TabbedPage.IsSmoothScrollEnabled="false"
                       BarBackgroundColor="Black"
                       BarTextColor="White">
