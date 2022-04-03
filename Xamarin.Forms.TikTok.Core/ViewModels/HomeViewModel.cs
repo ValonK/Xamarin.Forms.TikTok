@@ -16,7 +16,7 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
         
         private ObservableCollection<TikTokItem> _items;
         private TikTokItem _currentItem;
-
+        
         public HomeViewModel(IMediaService mediaService)
         {
             _mediaService = mediaService;
@@ -42,25 +42,20 @@ namespace Xamarin.Forms.TikTok.Core.ViewModels
         
         public override async void ViewAppearing()
         {
-            if (CurrentItem == null)
+            if (Items == null)
             {
                 IsBusy = true;
+                await Task.Delay(3000);
+                Items = new ObservableCollection<TikTokItem>(_mediaService.GetMediaItems());
                 CurrentItem = Items.First();
-                await Task.Delay(1000);
-                IsBusy = false;    
+                IsBusy = false;
             }
             else
-            {
+            {   
                 CurrentItem.IsPlaying = true;
             }
         }
-
-        public override Task Initialize()
-        {
-            Items = new ObservableCollection<TikTokItem>(_mediaService.GetMediaItems());
-            return Task.CompletedTask;
-        }
-
+        
         public override void ViewDisappearing()
         {
             if (Items.Count == 0) return;

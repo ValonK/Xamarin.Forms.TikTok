@@ -45,7 +45,7 @@
             ItemDisappearingCommand="{Binding ItemDisappearingCommand}"
             OppositePanDirectionDisablingThreshold="1"
             SelectedItem="{Binding CurrentItem}"
-            IsVisible="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}"
+            IsVisible="{Binding Source={x:Reference AnimationView}, Path=IsVisible, Converter={StaticResource InvertedBoolConverter}}"
             ItemsSource="{Binding Items}"
             IsViewReusingEnabled="False"
             ShouldShareViewAmongSameItems="False">
@@ -58,17 +58,19 @@
             </panCardView:CarouselView.ItemTemplate>
         </panCardView:CarouselView>
         
-        
         <!-- L O A D I N G -->
         <forms:AnimationView AnimationSource="AssetOrBundle"
                              Grid.Row="0"
+                             x:Name="AnimationView"
                              Grid.RowSpan="2"
+                             AutoPlay="True"
                              IsVisible="{Binding IsBusy}" 
                              IsAnimating="True"
                              x:DataType="viewModels1:HomeViewModel"
                              Animation="loading.json"
                              VerticalOptions="Center"
                              HeightRequest="80"
+                             WidthRequest="80"
                              HorizontalOptions="Center"
                              RepeatMode="Infinite"/>
 
@@ -195,5 +197,6 @@
                    x:Name="ArtistImage"
                    Grid.Column="1" />
         </Grid>
+       
     </Grid>
 </views:MvxContentPage>

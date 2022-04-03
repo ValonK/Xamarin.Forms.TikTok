@@ -21,7 +21,7 @@ public partial class HomePage
         RotateElement(ArtistImage);
     }
 
-    protected override async void OnAppearing()
+    protected override void OnAppearing()
     {
         base.OnAppearing();
         CarouselView.UserInteracted += CarouselView_UserInteracted;
